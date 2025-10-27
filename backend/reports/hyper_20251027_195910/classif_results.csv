@@ -1,0 +1,217 @@
+threshold,time_step,fees,cooldown,label,perf_pct,sharpe,mdd_pct,stdout
+0.45,20,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 0"
+0.45,20,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 1"
+0.45,20,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 2"
+0.45,20,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 0"
+0.45,20,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 1"
+0.45,20,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 2"
+0.45,20,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 0"
+0.45,20,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 1"
+0.45,20,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 2"
+0.45,30,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 0"
+0.45,30,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 1"
+0.45,30,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 2"
+0.45,30,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 0"
+0.45,30,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 1"
+0.45,30,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 2"
+0.45,30,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 0"
+0.45,30,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 1"
+0.45,30,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 2"
+0.45,40,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 0"
+0.45,40,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 1"
+0.45,40,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0001 --cooldown 2"
+0.45,40,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 0"
+0.45,40,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 1"
+0.45,40,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0002 --cooldown 2"
+0.45,40,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 0"
+0.45,40,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 1"
+0.45,40,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.45 --label up_1d --fees 0.0005 --cooldown 2"
+0.5,20,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 0"
+0.5,20,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 1"
+0.5,20,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 2"
+0.5,20,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 0"
+0.5,20,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 1"
+0.5,20,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 0"
+0.5,20,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 2"
+0.5,20,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 1"
+0.5,20,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 2"
+0.5,30,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 0"
+0.5,30,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 1"
+0.5,30,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 2"
+0.5,30,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 0"
+0.5,30,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 1"
+0.5,30,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 2"
+0.5,30,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 1"
+0.5,30,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 0"
+0.5,30,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 2"
+0.5,40,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 0"
+0.5,40,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 1"
+0.5,40,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0001 --cooldown 2"
+0.5,40,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 0"
+0.5,40,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 1"
+0.5,40,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0002 --cooldown 2"
+0.5,40,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 0"
+0.5,40,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 1"
+0.5,40,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.5 --label up_1d --fees 0.0005 --cooldown 2"
+0.55,20,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 0"
+0.55,20,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 1"
+0.55,20,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 0"
+0.55,20,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 2"
+0.55,20,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 1"
+0.55,20,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 2"
+0.55,20,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 0"
+0.55,20,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 1"
+0.55,20,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 2"
+0.55,30,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 0"
+0.55,30,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 1"
+0.55,30,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 2"
+0.55,30,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 0"
+0.55,30,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 1"
+0.55,30,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 2"
+0.55,30,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 0"
+0.55,30,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 1"
+0.55,30,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 2"
+0.55,40,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 0"
+0.55,40,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 1"
+0.55,40,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0001 --cooldown 2"
+0.55,40,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 0"
+0.55,40,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 1"
+0.55,40,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0002 --cooldown 2"
+0.55,40,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 0"
+0.55,40,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 1"
+0.55,40,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.55 --label up_1d --fees 0.0005 --cooldown 2"
+0.6,20,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 0"
+0.6,20,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 1"
+0.6,20,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 2"
+0.6,20,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 0"
+0.6,20,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 1"
+0.6,20,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 2"
+0.6,20,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 0"
+0.6,20,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 1"
+0.6,20,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 2"
+0.6,30,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 0"
+0.6,30,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 1"
+0.6,30,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 2"
+0.6,30,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 0"
+0.6,30,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 1"
+0.6,30,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 2"
+0.6,30,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 0"
+0.6,30,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 1"
+0.6,30,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 2"
+0.6,40,0.0001,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 0"
+0.6,40,0.0001,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 1"
+0.6,40,0.0001,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0001 --cooldown 2"
+0.6,40,0.0002,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 1"
+0.6,40,0.0002,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 2"
+0.6,40,0.0002,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0002 --cooldown 0"
+0.6,40,0.0005,1,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 1"
+0.6,40,0.0005,0,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 0"
+0.6,40,0.0005,2,up_1d,nan,nan,nan,"usage: evaluate_backtest.py [-h] [--data-dir DATA_DIR]
+evaluate_backtest.py: error: unrecognized arguments: --threshold 0.6 --label up_1d --fees 0.0005 --cooldown 2"

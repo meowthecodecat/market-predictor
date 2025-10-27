@@ -1,0 +1,6 @@
+.run__job{margin-bottom:12px;color:#9ca3af;font-size:14px}
+.run__mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, monospace}
+.run__footer{margin-top:16px;display:flex;gap:12px;align-items:center}
+.run__status{border:1px solid #374151;border-radius:8px;padding:6px 10px}
+.run__status.ok{border-color:#14532d;color:#22c55e}
+.run__status.ko{border-color:#7f1d1d;color:#ef4444}

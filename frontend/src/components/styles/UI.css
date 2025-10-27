@@ -1,0 +1,7 @@
+.ui-card{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:16px}
+.ui-button{background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:12px;cursor:pointer;transition:background .2s}
+.ui-button:hover{background:#1d4ed8}
+.ui-button:disabled{opacity:.5;cursor:default}
+.ui-page__header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.ui-page__title{margin:0;font-size:20px;font-weight:600}
+.ui-page__content{display:block}

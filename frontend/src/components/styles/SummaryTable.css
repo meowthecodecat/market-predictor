@@ -1,0 +1,12 @@
+.summary-table__controls{margin:0 0 12px;display:flex;gap:8px}
+.summary-table__filter{width:240px;background:#111827;color:#e5e7eb;border:1px solid #374151;border-radius:8px;padding:8px}
+.summary-table__container{overflow:auto;border:1px solid #1f2937;border-radius:16px}
+.summary-table__table{width:100%;border-collapse:collapse;background:#0f172a}
+.summary-table__table th,.summary-table__table td{padding:8px 12px;border-top:1px solid #1f2937}
+.summary-table__table thead th{background:#111827;text-align:left;cursor:pointer}
+.summary-table__table td.num{text-align:right}
+.summary-table__table td.pos{color:#22c55e}
+.summary-table__table td.neg{color:#ef4444}
+.summary-table__spark{width:160px;height:40px}
+.summary-table__badge{display:inline-block;border:1px solid #374151;border-radius:8px;padding:4px 8px}
+.summary-table__table td.empty{text-align:center;color:#9ca3af;padding:24px}

@@ -1,0 +1,4 @@
+.stat-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+.stat-cards__item{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:16px}
+.stat-cards__label{color:#9ca3af;font-size:14px}
+.stat-cards__value{font-size:24px;font-weight:600}

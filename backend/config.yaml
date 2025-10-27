@@ -1,0 +1,12 @@
+tickers: [AAPL, NVDA, AMD, TSLA, AMZN, GOOGL, MSFT, KO]
+years: 10
+time_step: 30
+epochs: 20
+fine_tune_epochs: 12
+alpha: 0.6
+threshold: 0.50
+fees: 0.0002
+cooldown: 1
+data_dir: data
+models_dir: models
+reports_dir: data/reports

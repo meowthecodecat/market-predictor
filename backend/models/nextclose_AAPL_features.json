@@ -1,0 +1,12 @@
+{
+  "features": [
+    "ret_1",
+    "ret_5",
+    "ret_10",
+    "hl_range",
+    "sma5_div_close",
+    "sma20_div_close",
+    "ema12_div_ema26"
+  ],
+  "time_step": 30
+}

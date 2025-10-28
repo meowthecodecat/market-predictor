@@ -8,5 +8,5 @@
     "sma20_div_close",
     "ema12_div_ema26"
   ],
-  "time_step": 20
+  "time_step": 40
 }

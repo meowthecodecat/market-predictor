@@ -1,1 +1,12 @@
-["Open", "High", "Low", "Close", "Adj close", "Volume", "ret_1", "ret_5", "ret_10", "hl_range", "sma_5", "sma_10", "sma_20", "ema_12", "ema_26", "rsi_14", "sma5_div_close", "sma20_div_close", "ema12_div_ema26", "vol_z"]
+{
+  "features": [
+    "ret_1",
+    "ret_5",
+    "ret_10",
+    "hl_range",
+    "sma5_div_close",
+    "sma20_div_close",
+    "ema12_div_ema26"
+  ],
+  "time_step": 40
+}

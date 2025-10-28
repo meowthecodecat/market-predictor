@@ -2,13 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html, body, #root { height: 100%; }
-  body {
-    background-color: theme('colors.surface'); /* au lieu de @apply bg-surface */
-    @apply text-gray-100 antialiased;
-  }
+@layer base{
+  html,body{ color: var(--fg); }
+  h1,h2,h3,strong{ color: var(--fg); }
+  a{ color: var(--accent); }
 }
+
 
 @layer utilities {
   .glass { @apply bg-white/5 backdrop-blur-md border border-white/10; }

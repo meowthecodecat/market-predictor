@@ -1,8 +1,10 @@
 .models__grid{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.models__symbol{font-size:20px;font-weight:600;margin-bottom:8px}
+.models__pane{padding:0} /* padding géré par LiquidPane */
+
+.models__symbol{font-size:20px;font-weight:600;margin-bottom:8px;color: var(--fg)}
 .models__flags{display:flex;gap:8px;align-items:center}
-.models__badge{display:inline-block;border:1px solid #374151;border-radius:8px;padding:4px 8px;color:#9ca3af}
-.models__badge.ok{border-color:#14532d;color:#22c55e}
-.models__badge.na{border-color:#374151}
-.models__ts{margin-top:8px;font-size:12px;color:#9ca3af}
-.models__empty{color:#9ca3af}
+.models__badge{display:inline-block;padding:4px 8px}
+.models__badge.ok{border-color:#14532d;color: var(--ok)}
+.models__badge.na{border-color:#374151;color: var(--fg-muted)}
+.models__ts{margin-top:8px;font-size:12px;color: var(--fg-muted)}
+.models__empty{color: var(--fg-muted)}

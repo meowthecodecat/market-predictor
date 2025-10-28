@@ -1,16 +1,14 @@
 # FILENAME: scripts/predict_next_close.py
 # -*- coding: utf-8 -*-
 """
-Prédiction close J+1 avec ensemblage LSTM + GBM calibré.
+Prédit uniquement le close J+1 à partir du LSTM de régression.
 - Charge nextclose_{SYM}.keras + scaler + features
-- Calcule ret_hat LSTM
-- Charge tabular_gbm_{SYM}_calibrated.pkl si dispo → p_up
-- Combine: ret_final = ret_lstm * max(0, (p_up - 0.5) * 2)
-- Calcule intervalle ±σ (estimé sur historique)
+- Sort ret_hat LSTM, reconstruit pred_close = last_close * (1 + ret_hat)
+- Donne en plus un intervalle 90% via sigma résiduelle (informatif, non bloquant)
 - Imprime: "{SYM} -> last_close=... pred_close=... d_pct=..."
 
 Usage:
-  python scripts/predict_next_close.py --symbol AAPL --time-step 30 --alpha 0.6
+  python scripts/predict_next_close.py --symbol AAPL --time-step 30
 """
 from __future__ import annotations
 import argparse, json, pickle
@@ -18,7 +16,6 @@ from pathlib import Path
 import numpy as np
 import pandas as pd
 import tensorflow as tf
-import joblib
 
 import sys
 sys.path.append(str(Path(__file__).resolve().parent))
@@ -43,7 +40,6 @@ def _to_seq_last(X2: np.ndarray, T: int) -> np.ndarray:
     return X2[-T:, :][None, :, :]
 
 def _residual_sigma(model, X_all_s: np.ndarray, y_all: np.ndarray, T: int) -> float:
-    # estime σ des résidus sur l'historique
     xs, ys = [], []
     for i in range(T, len(X_all_s)):
         xs.append(X_all_s[i - T:i, :])
@@ -60,7 +56,6 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--symbol", required=True)
     ap.add_argument("--time-step", type=int, default=30)
-    ap.add_argument("--alpha", type=float, default=0.6)  # non utilisé directement ici
     args = ap.parse_args()
 
     sym = args.symbol.upper()
@@ -79,8 +74,10 @@ def main():
     use_cols = meta.get("features", [])
     T = int(meta.get("time_step", T))
 
+    # données
     raw = _load_prices(sym)
-    # exog si dispos
+
+    # exog: chargement facultatif si présents en local, sinon ignorés
     def _try(symbol: str) -> pd.DataFrame | None:
         p = DATA / f"{symbol}_historical_prices.csv"
         if p.exists():
@@ -89,61 +86,38 @@ def main():
             df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
             return df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
         return None
-    exog = {}
-    for k in ["SPY","XLK","DXY","US10Y"]:
-        dfk = _try(k)
-        if dfk is not None:
-            exog[k] = dfk
+    exog = {k: _try(k) for k in ["SPY","XLK","DXY","US10Y"] if _try(k) is not None}
 
     feat_df, _ = make_features(raw, market_df=None, earnings_dates=None, exog=exog)
     last_close = float(raw["Close"].iloc[-1])
 
-    # LSTM
+    # préparation features
     X_all = feat_df[use_cols].astype(np.float32)
     with open(scaler_path, "rb") as f:
         scaler = pickle.load(f)
     Xs = scaler.transform(X_all)
     X_last = _to_seq_last(Xs, T)
 
+    # modèle
     model = tf.keras.models.load_model(model_path)
-    ret_lstm = float(model.predict(X_last, verbose=0).reshape(-1)[0])
+    ret_hat = float(model.predict(X_last, verbose=0).reshape(-1)[0])
 
-    # σ résiduelle estimation
-    # reconstitue y_all (ret_+1) aligné
+    # intervalle 90% informatif
     ret1 = pd.to_numeric(raw["Close"], errors="coerce").pct_change().shift(-1)
     y_all = ret1.reindex(feat_df.index).to_numpy(dtype=np.float32)
     sigma = _residual_sigma(model, Xs, y_all, T)
 
-    # GBM calibré (optionnel)
-    p_up = None
-    gbm_file = MODELS / f"tabular_gbm_{sym}_calibrated.pkl"
-    if gbm_file.exists():
-        obj = joblib.load(gbm_file)
-        gbm = obj["model"]
-        scal = obj["scaler"]
-        fcols = obj["features"]
-        X_tab = feat_df[fcols].astype(float).to_numpy()
-        X_tab_s = scal.transform(X_tab)
-        p_up = float(gbm.predict_proba(X_tab_s[-1:])[:,1][0])
-
-    # ensemblage
-    if p_up is None:
-        ret_final = ret_lstm
-    else:
-        # amplifie/diminue la magnitude selon la confiance directionnelle
-        conf = max(0.0, (p_up - 0.5) * 2.0)  # 0..1
-        ret_final = ret_lstm * conf
-
-    pred_close = last_close * (1.0 + ret_final)
+    # close prédit
+    pred_close = last_close * (1.0 + ret_hat)
     d_pct = (pred_close / last_close) - 1.0
 
-    # impression attendue par run_all.py
     print(f"{sym} -> last_close={last_close:.2f} pred_close={pred_close:.2f} d_pct={d_pct*100:.2f}")
-    # info additionnelle lisible
-    if p_up is not None:
-        low = last_close * (1.0 + ret_final - 1.64*sigma)
-        high = last_close * (1.0 + ret_final + 1.64*sigma)
-        print(f"p_up={p_up:.3f}  ret_lstm={ret_lstm:.5f}  ret_final={ret_final:.5f}  CI90%=[{low:.2f},{high:.2f}]")
+    if sigma > 0:
+        low = last_close * (1.0 + ret_hat - 1.64*sigma)
+        high = last_close * (1.0 + ret_hat + 1.64*sigma)
+        print(f"ret_lstm={ret_hat:.5f}  sigma={sigma:.5f}  CI90%=[{low:.2f},{high:.2f}]")
+    else:
+        print(f"ret_lstm={ret_hat:.5f}  sigma=0.00000")
 
     return 0
 

@@ -223,3 +223,211 @@ TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
 2025-10-28 10:51:32,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=261.86 d_pct=-2.75,8530dbe5eb79c8c2e0bb4350d0515e5a
 2025-10-28 10:51:32,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=531.47 d_pct=-0.01,8530dbe5eb79c8c2e0bb4350d0515e5a
 2025-10-28 10:51:32,predict,KO,OK,KO -> last_close=70.06 pred_close=68.46 d_pct=-2.28,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 12:15:59,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 12:15:59,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01316  MAE_val_terminal=0.01031  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02905  MAE_val_terminal=0.02406  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.03063  MAE_val_terminal=0.02309  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02526  MAE_val_terminal=0.01868  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01412  MAE_val_terminal=0.01146  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01455  MAE_val_terminal=0.01229  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01189  MAE_val_terminal=0.00891  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01529  MAE_val_terminal=0.01212  N_seq=341,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,AAPL,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,NVDA,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,AMD,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,TSLA,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,AMZN,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,GOOGL,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,MSFT,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,train_tab,KO,OK,Données insuffisantes.,524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 12:15:59,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.38%  CAGR=1.22%
+NVDA  Sharpe=0.86  MaxDD=-3.95%  CAGR=37.22%
+AMD  Sharpe=0.80  MaxDD=-1.24%  CAGR=7.61%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.36%
+AMZN  Sharpe=0.19  MaxDD=-0.25%  CAGR=0.22%
+GOOGL  Sharpe=0.33  MaxDD=-0.34%  CAGR=0.44%
+MSFT  Sharpe=0.81  MaxDD=-0.15%  CAGR=0.68%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-28 12:15:59,predict,AAPL,OK,"AAPL -> last_close=268.81 pred_close=268.81 d_pct=0.00
+ret_lstm=-0.01282 | sigma=0.03857 | ATR14=5.69857 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,NVDA,OK,"NVDA -> last_close=191.49 pred_close=191.49 d_pct=0.00
+ret_lstm=0.01852 | sigma=0.06015 | ATR14=5.91143 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,AMD,OK,"AMD -> last_close=259.67 pred_close=259.67 d_pct=0.00
+ret_lstm=0.02470 | sigma=0.05968 | ATR14=13.02714 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,TSLA,OK,"TSLA -> last_close=452.42 pred_close=452.42 d_pct=0.00
+ret_lstm=-0.01359 | sigma=0.05272 | ATR14=19.25286 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,AMZN,OK,"AMZN -> last_close=226.97 pred_close=226.97 d_pct=0.00
+ret_lstm=0.00133 | sigma=0.04441 | ATR14=5.60572 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,GOOGL,OK,"GOOGL -> last_close=269.27 pred_close=269.27 d_pct=0.00
+ret_lstm=-0.02752 | sigma=0.05063 | ATR14=6.87071 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,MSFT,OK,"MSFT -> last_close=531.52 pred_close=531.52 d_pct=0.00
+ret_lstm=-0.00010 | sigma=0.05457 | ATR14=7.40429 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:15:59,predict,KO,OK,"KO -> last_close=70.06 pred_close=70.06 d_pct=0.00
+ret_lstm=-0.02281 | sigma=0.06816 | ATR14=1.02714 | weight=0.000 | confident=0",524cecffca5dd2ac723051e21c847519
+2025-10-28 12:22:55,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 12:22:55,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01316  MAE_val_terminal=0.01031  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02905  MAE_val_terminal=0.02406  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.03063  MAE_val_terminal=0.02309  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02526  MAE_val_terminal=0.01868  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01412  MAE_val_terminal=0.01146  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01455  MAE_val_terminal=0.01229  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01189  MAE_val_terminal=0.00891  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01529  MAE_val_terminal=0.01212  N_seq=341,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,AAPL,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,NVDA,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,AMD,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,TSLA,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,AMZN,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,GOOGL,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,MSFT,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,train_tab,KO,OK,Données insuffisantes.,91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 12:22:55,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.38%  CAGR=1.22%
+NVDA  Sharpe=0.86  MaxDD=-3.95%  CAGR=37.22%
+AMD  Sharpe=0.80  MaxDD=-1.24%  CAGR=7.61%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.36%
+AMZN  Sharpe=0.19  MaxDD=-0.25%  CAGR=0.22%
+GOOGL  Sharpe=0.33  MaxDD=-0.34%  CAGR=0.44%
+MSFT  Sharpe=0.81  MaxDD=-0.15%  CAGR=0.68%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-28 12:22:55,predict,AAPL,FAIL,"2025-10-28 13:24:27.713641: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:30.156086: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,NVDA,FAIL,"2025-10-28 13:24:32.310651: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:34.773642: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,AMD,FAIL,"2025-10-28 13:24:36.991875: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:39.445123: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,TSLA,FAIL,"2025-10-28 13:24:41.575813: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:44.018984: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,AMZN,FAIL,"2025-10-28 13:24:46.087509: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:48.601555: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,GOOGL,FAIL,"2025-10-28 13:24:50.687825: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:53.185817: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,MSFT,FAIL,"2025-10-28 13:24:55.241929: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:24:57.717847: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:22:55,predict,KO,FAIL,"2025-10-28 13:24:59.785971: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 13:25:02.258158: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",91e27f6479cbee2d1a17bbdc3152463a
+2025-10-28 12:27:24,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 12:27:24,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01316  MAE_val_terminal=0.01031  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02905  MAE_val_terminal=0.02406  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.03063  MAE_val_terminal=0.02309  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02526  MAE_val_terminal=0.01868  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01412  MAE_val_terminal=0.01146  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01455  MAE_val_terminal=0.01229  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01189  MAE_val_terminal=0.00891  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01529  MAE_val_terminal=0.01212  N_seq=341,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,AAPL,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,NVDA,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,AMD,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,TSLA,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,AMZN,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,GOOGL,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,MSFT,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,train_tab,KO,OK,Données insuffisantes.,7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 12:27:24,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.38%  CAGR=1.22%
+NVDA  Sharpe=0.86  MaxDD=-3.95%  CAGR=37.22%
+AMD  Sharpe=0.80  MaxDD=-1.24%  CAGR=7.61%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.36%
+AMZN  Sharpe=0.19  MaxDD=-0.25%  CAGR=0.22%
+GOOGL  Sharpe=0.33  MaxDD=-0.34%  CAGR=0.44%
+MSFT  Sharpe=0.81  MaxDD=-0.15%  CAGR=0.68%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-28 12:27:24,predict,AAPL,OK,"AAPL -> last_close=268.81 pred_close=265.36 d_pct=-1.28
+ret_lstm=-0.01282  sigma=0.03857  CI90%=[248.36,282.37]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,NVDA,OK,"NVDA -> last_close=191.49 pred_close=195.04 d_pct=1.85
+ret_lstm=0.01852  sigma=0.06015  CI90%=[176.15,213.92]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,AMD,OK,"AMD -> last_close=259.67 pred_close=266.08 d_pct=2.47
+ret_lstm=0.02470  sigma=0.05968  CI90%=[240.67,291.50]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,TSLA,OK,"TSLA -> last_close=452.42 pred_close=446.27 d_pct=-1.36
+ret_lstm=-0.01359  sigma=0.05272  CI90%=[407.15,485.39]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,AMZN,OK,"AMZN -> last_close=226.97 pred_close=227.27 d_pct=0.13
+ret_lstm=0.00133  sigma=0.04441  CI90%=[210.74,243.80]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,GOOGL,OK,"GOOGL -> last_close=269.27 pred_close=261.86 d_pct=-2.75
+ret_lstm=-0.02752  sigma=0.05063  CI90%=[239.50,284.22]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,MSFT,OK,"MSFT -> last_close=531.52 pred_close=531.47 d_pct=-0.01
+ret_lstm=-0.00010  sigma=0.05457  CI90%=[483.90,579.03]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-28 12:27:24,predict,KO,OK,"KO -> last_close=70.06 pred_close=68.46 d_pct=-2.28
+ret_lstm=-0.02281  sigma=0.06816  CI90%=[60.63,76.29]",7b53b4e73d8b96834c26e2c3ce49580b

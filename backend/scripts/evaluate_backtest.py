@@ -1,109 +1,105 @@
 # FILENAME: scripts/evaluate_backtest.py
 # -*- coding: utf-8 -*-
 """
-Évaluation prix et backtest simple avec découpes par régimes.
-
-Usage:
-  python scripts/evaluate_backtest.py
-  # options:
-  #   --data-dir data --fees 0.0002
-
-Lit *_historical_prices.csv dans data/.
-Calcule:
-  - Buy&Hold cumulé, Sharpe, MaxDD
-  - Stats par régime de tendance (EMA12 vs EMA26)
-  - Stats par régime de volatilité (σ20 sur ret1, terciles)
+Backtest simple avec sizing et stops ATR.
+- Position = weight_t * sign(ret_final) (weight borné [0,1])
+- SL = 1.5*ATR, TP = 3*ATR, time-stop = 5 jours
+- Exporte metrics/jour dans reports/daily_metrics.csv
+Entrées attendues: data/*_historical_prices.csv
 """
-
 from __future__ import annotations
-import argparse
 from pathlib import Path
-import numpy as np
-import pandas as pd
+import numpy as np, pandas as pd
 
-def _load_one(p: Path) -> pd.DataFrame:
+ROOT = Path(__file__).resolve().parents[1]
+DATA = ROOT / "data"
+REPORTS = ROOT / "reports"
+REPORTS.mkdir(parents=True, exist_ok=True)
+
+def _load(sym: str) -> pd.DataFrame:
+    p = DATA / f"{sym}_historical_prices.csv"
     df = pd.read_csv(p)
     df = df.rename(columns={c: c.capitalize() for c in df.columns})
-    if "Date" not in df.columns or "Close" not in df.columns:
-        raise ValueError(f"Colonnes manquantes: {p}")
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
-    for c in ["Open","High","Low","Close","Adj Close","Volume"]:
-        if c in df.columns:
-            df[c] = pd.to_numeric(df[c], errors="coerce")
-    df = df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
-    return df
+    return df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
 
-def _sharpe(ret: pd.Series) -> float:
-    ret = ret.replace([np.inf,-np.inf], 0.0).fillna(0.0)
-    s = ret.std()
-    return float((ret.mean() / (s + 1e-12)) * np.sqrt(252)) if len(ret) > 2 else 0.0
+def _atr14(df: pd.DataFrame) -> pd.Series:
+    high, low, close = df["High"], df["Low"], df["Close"]
+    pc = close.shift(1)
+    tr = pd.concat([(high-low).abs(), (high-pc).abs(), (low-pc).abs()], axis=1).max(axis=1)
+    return tr.rolling(14, min_periods=1).mean().fillna(method="bfill").fillna(0.0)
 
-def _maxdd(eq: pd.Series) -> float:
-    peak = eq.cummax()
-    dd = (eq/peak - 1.0).min()
-    return float(-dd)
+def backtest_symbol(sym: str) -> pd.DataFrame:
+    df = _load(sym)
+    df["ATR_14"] = _atr14(df)
+    close = df["Close"].values
+    ret1 = pd.Series(close).pct_change().shift(-1).fillna(0.0).values
 
-def _bh_stats(close: pd.Series) -> dict:
-    ret1 = close.pct_change().fillna(0.0)
-    eq = (1.0 + ret1).cumprod()
-    return {
-        "n_days": int((ret1.shape[0])),
-        "bh_cum": float(eq.iloc[-1] - 1.0),
-        "sharpe": _sharpe(ret1),
-        "maxdd": _maxdd(eq),
-        "avg_ret_1d": float(ret1.mean()),
-        "vol_1d": float(ret1.std()),
-    }
+    # signal proxy: direction = signe de ret_5 récent, sizing via ATR
+    ret5 = pd.Series(close).pct_change(5).fillna(0.0).values
+    p_up = 1/(1+np.exp(-20*ret5))
+    conf = np.maximum(0.0, (p_up - 0.5) * 2.0)  # 0..1
+    VOL_TARGET_DAILY = 0.15/np.sqrt(252)
+    weight = np.minimum(1.0, VOL_TARGET_DAILY / (df["ATR_14"].replace(0.0, np.nan))).fillna(0.0).values
+    pos = np.sign(ret5) * conf * weight  # [-1,1] borné
 
-def _regimes(df: pd.DataFrame) -> pd.DataFrame:
-    d = df.copy()
-    d["ema12"] = d["Close"].ewm(span=12, adjust=False).mean()
-    d["ema26"] = d["Close"].ewm(span=26, adjust=False).mean()
-    d["trend_regime"] = np.sign(d["ema12"] - d["ema26"]).astype("Int8")  # -1,0,1
-    ret1 = d["Close"].pct_change().fillna(0.0)
-    vol20 = ret1.rolling(20, min_periods=1).std().fillna(0.0)
-    d["vol_regime"] = pd.qcut(vol20, 3, labels=[0,1,2], duplicates="drop").astype("Int8")  # 0=bas,2=haut
-    return d
+    # SL/TP ATR, time-stop=5j (approx en ret quotidien)
+    sl = 1.5 * df["ATR_14"].values / close
+    tp = 3.0 * df["ATR_14"].values / close
+    max_hold = 5
 
-def _stats_by_group(df: pd.DataFrame, key: str) -> pd.DataFrame:
-    out = []
-    for k, g in df.groupby(key):
-        st = _bh_stats(g["Close"])
-        st["group"] = int(k)
-        out.append(st)
-    return pd.DataFrame(out).sort_values("group")
+    pnl = np.zeros(len(df))
+    holding = 0
+    entry_idx = None
+    direction = 0
+
+    for t in range(len(df)-1):
+        if holding == 0:
+            direction = np.sign(pos[t])  # -1, 0, 1
+            if direction != 0:
+                holding = 1
+                entry_idx = t
+                entry_price = close[t]
+        else:
+            # mouvement du jour t->t+1
+            move = (close[t+1] - close[t]) / close[t]
+            pnl[t+1] += direction * weight[t] * move
+            # SL/TP check
+            if direction > 0:
+                if (close[t+1] - entry_price)/entry_price <= -sl[entry_idx]: holding = 0
+                elif (close[t+1] - entry_price)/entry_price >=  tp[entry_idx]: holding = 0
+            else:
+                if (entry_price - close[t+1])/entry_price <= -sl[entry_idx]: holding = 0
+                elif (entry_price - close[t+1])/entry_price >=  tp[entry_idx]: holding = 0
+            # time-stop
+            if holding and (t - entry_idx + 1) >= max_hold: holding = 0
+
+    eq = (1.0 + pd.Series(pnl)).cumprod()
+    ret = pd.Series(pnl).replace([np.inf,-np.inf], 0.0).fillna(0.0)
+    sharpe = (ret.mean() / (ret.std() + 1e-12)) * np.sqrt(252) if len(ret)>2 else 0.0
+    mdd = ((eq / eq.cummax()) - 1.0).min() if len(eq) else 0.0
+
+    daily = pd.DataFrame({
+        "Date": df["Date"],
+        "symbol": sym,
+        "ret": ret.values,
+        "weight": weight,
+        "pos": pos,
+        "ATR_14": df["ATR_14"].values
+    })
+    daily["equity"] = (1.0 + daily["ret"]).cumprod()
+    daily["sharpe_rolling"] = daily["ret"].rolling(60).mean() / (daily["ret"].rolling(60).std()+1e-12) * np.sqrt(252)
+
+    print(f"{sym}  Sharpe={sharpe:.2f}  MaxDD={mdd:.2%}  CAGR={float(eq.iloc[-1]-1):.2%}")
+    return daily
 
 def main():
-    ap = argparse.ArgumentParser()
-    ap.add_argument("--data-dir", type=str, default=str(Path(__file__).resolve().parents[1] / "data"))
-    ap.add_argument("--fees", type=float, default=0.0000, help="frais fictifs non utilisés ici, placeholder")
-    args = ap.parse_args()
-
-    data_dir = Path(args.data_dir)
-    files = sorted(data_dir.glob("*_historical_prices.csv"))
-    if not files:
-        print("Aucun CSV *_historical_prices.csv trouvé.")
-        return
-
-    print("symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d")
-    for f in files:
-        sym = f.name.split("_")[0]
-        try:
-            df = _load_one(f)
-            base = _bh_stats(df["Close"])
-            print(f"{sym},{base['n_days']},{base['bh_cum']:.6f},{base['sharpe']:.3f},{base['maxdd']:.3f},{base['avg_ret_1d']:.6f},{base['vol_1d']:.6f}")
-
-            # Régimes
-            d = _regimes(df)
-            by_trend = _stats_by_group(d, "trend_regime")
-            by_vol = _stats_by_group(d, "vol_regime")
-
-            out_tr = data_dir / f"{sym}_stats_by_trend.csv"
-            out_vl = data_dir / f"{sym}_stats_by_vol.csv"
-            by_trend.to_csv(out_tr, index=False)
-            by_vol.to_csv(out_vl, index=False)
-        except Exception as e:
-            print(f"{sym},0,,,,,  # FAIL: {e}")
+    tickers = ["AAPL","NVDA","AMD","TSLA","AMZN","GOOGL","MSFT","KO"]
+    frames = [backtest_symbol(s) for s in tickers]
+    daily = pd.concat(frames, ignore_index=True)
+    out = REPORTS / "daily_metrics.csv"
+    daily.to_csv(out, index=False)
+    print(f"Saved daily metrics: {out}")
 
 if __name__ == "__main__":
     main()

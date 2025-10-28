@@ -1,4 +1,17 @@
-.stat-cards{display:grid;gap:16px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
-.stat-cards__item{background:#111827;border:1px solid #1f2937;border-radius:16px;padding:16px}
-.stat-cards__label{color:#9ca3af;font-size:14px}
-.stat-cards__value{font-size:24px;font-weight:600}
+.stat-cards{display:grid;gap:16px;grid-template-columns:repeat(4,1fr)}
+@media(max-width:900px){.stat-cards{grid-template-columns:repeat(2,1fr)}}
+
+.stat-cards__item{
+  border-radius: var(--lg-br);
+  background: var(--lg-bg);
+  border: var(--lg-border);
+  box-shadow: var(--lg-shadow), var(--lg-glow);
+  backdrop-filter: var(--lg-blur);
+  -webkit-backdrop-filter: var(--lg-blur);
+  padding:16px;
+  color: var(--fg);
+}
+.stat-cards__label{color: var(--fg-muted); font-size:14px}
+.stat-cards__value{font-size:28px;font-weight:700}
+.stat-cards__delta.pos{color: var(--ok)}
+.stat-cards__delta.neg{color: var(--ko)}

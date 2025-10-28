@@ -2,8 +2,9 @@ import React, { useEffect, useRef, useState } from 'react'
 import { postRun, getRunLogs, getRunStatus } from '../lib/api.js'
 import LogsConsole from '../components/LogsConsole.jsx'
 import { Link } from 'react-router-dom'
-import { Button, Card, Page } from '../components/UI.jsx'
+import { Button, Page } from '../components/UI.jsx'
 import './styles/RunPipeline.css'
+import LiquidPane from '../components/LiquidPane.jsx'
 
 export default function RunPipeline() {
   const [jobId, setJobId] = useState(null)
@@ -41,12 +42,15 @@ export default function RunPipeline() {
       title="Run pipeline"
       action={<Button onClick={onRun} disabled={running}>{running ? 'En cours…' : 'Run'}</Button>}
     >
-      {jobId && <div className="run__job">job_id: <span className="run__mono">{jobId}</span></div>}
-      <Card><LogsConsole lines={lines} /></Card>
+      {jobId && <div className="run__job lg-chip">job_id: <span className="run__mono">{jobId}</span></div>}
+
+      <LiquidPane className="run__card">
+        <LogsConsole lines={lines} />
+      </LiquidPane>
 
       {!running && exitCode !== null && (
         <div className="run__footer">
-          <div className={'run__status ' + (exitCode === 0 ? 'ok' : 'ko')}>
+          <div className={'run__status lg-chip ' + (exitCode === 0 ? 'ok' : 'ko')}>
             Terminé. exit_code = {exitCode}
           </div>
           <Link to="/" className="ui-button">Voir Dashboard</Link>

@@ -1,1 +1,30 @@
-.dash__card{margin-bottom:24px}
+/* Cartes “liquid glass” et respiration */
+.dash__card{
+  transform:scale(.94);
+  transform-origin: top center;
+  margin-bottom: 24px;
+  border-radius: var(--lg-br);
+  background: var(--lg-bg);
+  border: var(--lg-border);
+  box-shadow: var(--lg-shadow), var(--lg-glow);
+  backdrop-filter: var(--lg-blur);
+  -webkit-backdrop-filter: var(--lg-blur);
+}
+
+/* Bandeau */
+.dash__banner{
+  display:flex; align-items:center; gap:12px;
+  margin-bottom:16px; padding:12px 16px;
+  border-radius:14px; border:1px solid rgba(255,255,255,.10);
+  background: rgba(2,6,23,.45);
+  backdrop-filter: blur(10px) saturate(140%);
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+}
+.dash__badge{
+  background: rgba(255,255,255,.08);
+  border:1px solid rgba(255,255,255,.14);
+  border-radius:999px; padding:4px 10px; font-size:12px;
+  color: var(--fg-muted);
+}
+.dash__when{ font-weight:600; color: var(--fg); }
+.dash__count{ margin-left:auto; color: var(--fg-muted); font-size:14px }

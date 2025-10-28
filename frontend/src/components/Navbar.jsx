@@ -1,41 +1,25 @@
-import React, { useState } from 'react'
-import { NavLink } from 'react-router-dom'
-import './styles/Navbar.css'
+import React from 'react'
+import GooeyNav from './GooeyNav.jsx'
+
+// précharge les chunks au hover
+const preloads = {
+  '/':      () => import('../pages/Dashboard.jsx'),
+  '/run':   () => import('../pages/RunPipeline.jsx'),
+  '/models':() => import('../pages/Models.jsx'),
+}
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-
-  const linkClass = ({ isActive }) =>
-    'navbar__link' + (isActive ? ' navbar__link--active' : '')
-
+  const items = [
+    { label: 'Dashboard', href: '/' },
+    { label: 'Run',       href: '/run' },
+    { label: 'Models',    href: '/models' },
+  ]
   return (
-    <nav className="navbar">
-      <div className="navbar__inner">
-        <div className="navbar__brand">
-          <div className="navbar__logo">📈</div>
-          <span className="navbar__title">Market Scanner</span>
-        </div>
-
-        <div className="navbar__links">
-          <NavLink to="/" className={linkClass}>Dashboard</NavLink>
-          <NavLink to="/run" className={linkClass}>Run pipeline</NavLink>
-          <NavLink to="/models" className={linkClass}>Models</NavLink>
-        </div>
-
-        <button
-          className="navbar__menuBtn"
-          onClick={() => setOpen(v => !v)}
-          aria-label="menu"
-        >☰</button>
-      </div>
-
-      {open && (
-        <div className="navbar__mobile">
-          <NavLink to="/" className={linkClass} onClick={()=>setOpen(false)}>Dashboard</NavLink>
-          <NavLink to="/run" className={linkClass} onClick={()=>setOpen(false)}>Run pipeline</NavLink>
-          <NavLink to="/models" className={linkClass} onClick={()=>setOpen(false)}>Models</NavLink>
-        </div>
-      )}
-    </nav>
+    <GooeyNav
+      items={items.map(it => ({
+        ...it,
+        onHover: () => preloads[it.href]?.()
+      }))}
+    />
   )
 }

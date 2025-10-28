@@ -10,14 +10,17 @@
   },
   "dependencies": {
     "axios": "^1.12.2",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "liquid-glass-react": "^1.1.1",
+    "ogl": "^1.0.11",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
     "react-router-dom": "^6.27.0",
     "recharts": "^2.15.4"
   },
   "devDependencies": {
     "@types/react": "^18.3.8",
     "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^5.1.0",
     "autoprefixer": "^10.4.21",
     "postcss": "^8.5.6",
     "tailwindcss": "^3.4.18",

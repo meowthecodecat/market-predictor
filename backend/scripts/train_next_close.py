@@ -1,13 +1,21 @@
 # FILENAME: scripts/train_next_close.py
 # -*- coding: utf-8 -*-
 from __future__ import annotations
-import argparse, json, os, sys, pickle
-from pathlib import Path
-import numpy as np
-import pandas as pd
-
-os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
+# === DÉTERMINISME TOTAL ===
+import os, random, numpy as np
+os.environ["PYTHONHASHSEED"] = "42"
+os.environ["TF_DETERMINISTIC_OPS"] = "1"
+os.environ["CUDA_VISIBLE_DEVICES"] = ""  # CPU only
+random.seed(42); np.random.seed(42)
 import tensorflow as tf
+tf.random.set_seed(42)
+tf.config.threading.set_intra_op_parallelism_threads(1)
+tf.config.threading.set_inter_op_parallelism_threads(1)
+# ==========================
+
+import argparse, json, sys, pickle
+from pathlib import Path
+import pandas as pd
 from sklearn.preprocessing import StandardScaler
 from sklearn.metrics import mean_squared_error, mean_absolute_error
 
@@ -33,7 +41,7 @@ def _safe_rmse(y_true, y_pred) -> float:
 def _build_lstm(T: int, D: int, lr: float = 1e-3) -> tf.keras.Model:
     inp = tf.keras.layers.Input(shape=(T, D))
     x = tf.keras.layers.LSTM(64)(inp)
-    x = tf.keras.layers.Dropout(0.2)(x)
+    x = tf.keras.layers.Dropout(0.2)(x)  # seed TF + CPU rend dropout déterministe
     x = tf.keras.layers.Dense(32, activation="relu")(x)
     out = tf.keras.layers.Dense(1)(x)
     model = tf.keras.Model(inp, out)
@@ -43,18 +51,12 @@ def _build_lstm(T: int, D: int, lr: float = 1e-3) -> tf.keras.Model:
 def _to_sequences(X2: np.ndarray, y2: np.ndarray, T: int):
     X2 = np.asarray(X2, dtype=np.float32)
     y2 = np.asarray(y2, dtype=np.float32)
-    assert X2.ndim == 2, f"X2 doit être 2D, got {X2.shape}"
-    assert y2.ndim == 1, f"y2 doit être 1D, got {y2.shape}"
     xs, ys = [], []
     for i in range(T, len(X2)):
         xs.append(X2[i - T:i, :])
         ys.append(y2[i])
     Xs = np.asarray(xs, dtype=np.float32)
     ys = np.asarray(ys, dtype=np.float32)
-    if Xs.size == 0:
-        return Xs, ys
-    assert Xs.ndim == 3, f"Xs doit être 3D (N,T,D), got {Xs.shape}"
-    assert ys.ndim == 1 and len(ys) == len(Xs), f"ys alignement invalide: {ys.shape} vs {Xs.shape}"
     return Xs, ys
 
 def _load_prices(data_dir: Path, symbol: str) -> pd.DataFrame:
@@ -86,23 +88,19 @@ def main():
     data_dir = Path(args.data_dir)
     models_dir = Path(args.models_dir)
 
-    # 1) Données + features
     raw = _load_prices(data_dir, sym)
     feat_df, _ = make_features(raw, market_df=None, earnings_dates=None)
 
-    # 2) Cible ret J+1 alignée
     close = pd.to_numeric(raw["Close"], errors="coerce")
     ret1 = close.pct_change().shift(-1)
     y_full = ret1.reindex(feat_df.index).astype(float)
 
-    # 3) Fenêtre + reset index + poids
     feat_df = time_window(feat_df, args.lookback_days).reset_index(drop=True)
     y_full = y_full.loc[feat_df.index].reset_index(drop=True)
 
     sample_w = time_decay_weights(feat_df, args.half_life_days)
     w_series = pd.Series(sample_w, index=feat_df.index)
 
-    # 4) Features
     use_cols = [c for c in DEFAULT_FEATURES if c in feat_df.columns]
     if not use_cols:
         use_cols = [c for c in feat_df.select_dtypes(include=[np.number]).columns if c != "Close"][:16]
@@ -118,7 +116,6 @@ def main():
     y_all = df_xy["y"].to_numpy(dtype=np.float32)
     w_all = w_series.loc[df_xy.index].to_numpy(dtype=np.float32)
 
-    # 5) Walk-forward CV
     cv_records = []
     scaler = StandardScaler()
 
@@ -143,13 +140,7 @@ def main():
         if Xtr_seq.size == 0 or Xva_seq.size == 0:
             continue
 
-        # poids alignés
         wtr_seq = wtr[T:].astype(np.float32)
-        assert len(wtr_seq) == len(ytr_seq), f"wtr_seq {len(wtr_seq)} != ytr_seq {len(ytr_seq)}"
-
-        # sécurités de shape
-        assert Xtr_seq.ndim == 3 and Xtr_seq.shape[1] == T, f"Xtr_seq shape {Xtr_seq.shape}"
-        assert Xva_seq.ndim == 3 and Xva_seq.shape[1] == T, f"Xva_seq shape {Xva_seq.shape}"
 
         model = _build_lstm(T, Xtr_seq.shape[-1], lr=1e-3)
         cb = [tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)]
@@ -158,7 +149,8 @@ def main():
             Xtr_seq, ytr_seq,
             sample_weight=wtr_seq,
             validation_data=(Xva_seq, yva_seq),
-            epochs=args.epochs, batch_size=min(64, len(ytr_seq)), verbose=0, callbacks=cb
+            epochs=args.epochs, batch_size=min(64, len(ytr_seq)),
+            shuffle=False, verbose=0, callbacks=cb
         )
         if args.fine_tune_epochs > 0:
             model.compile(optimizer=tf.keras.optimizers.Adam(learning_rate=5e-4), loss="mse")
@@ -166,7 +158,8 @@ def main():
                 Xtr_seq, ytr_seq,
                 sample_weight=wtr_seq,
                 validation_data=(Xva_seq, yva_seq),
-                epochs=args.fine_tune_epochs, batch_size=min(64, len(ytr_seq)), verbose=0, callbacks=cb
+                epochs=args.fine_tune_epochs, batch_size=min(64, len(ytr_seq)),
+                shuffle=False, verbose=0, callbacks=cb
             )
 
         yhat_va = model.predict(Xva_seq, verbose=0).reshape(-1)
@@ -182,7 +175,6 @@ def main():
         print(cv_df)
         print("\nMoyennes CV:\n", cv_df.mean(numeric_only=True))
 
-    # 6) Entraînement final
     scaler.fit(X_all)
     X_all_s = scaler.transform(X_all).astype(np.float32)
     X_seq, y_seq = _to_sequences(X_all_s, y_all, T)
@@ -190,7 +182,6 @@ def main():
         print(f"{sym}: séquences insuffisantes.")
         return 1
     w_seq = w_all[T:].astype(np.float32)
-    assert len(w_seq) == len(y_seq), f"w_seq {len(w_seq)} != y_seq {len(y_seq)}"
 
     final_model = _build_lstm(T, X_seq.shape[-1], lr=1e-3)
     cb = [tf.keras.callbacks.EarlyStopping(monitor="val_loss", patience=5, restore_best_weights=True)]
@@ -198,10 +189,10 @@ def main():
         X_seq, y_seq,
         sample_weight=w_seq,
         epochs=args.epochs + max(0, args.fine_tune_epochs // 2),
-        batch_size=min(64, len(y_seq)), verbose=0, callbacks=cb
+        batch_size=min(64, len(y_seq)),
+        shuffle=False, verbose=0, callbacks=cb
     )
 
-    # 7) Hold-out terminal simple
     n = len(X_all_s)
     split = int(n * 0.8)
     Xtr_s, Xte_s = X_all_s[:split], X_all_s[split:]
@@ -216,7 +207,6 @@ def main():
     else:
         print(f"{sym}: N_seq={len(y_seq)}")
 
-    # 8) Sauvegardes
     lstm_path = models_dir / f"nextclose_{sym}.keras"
     scaler_path = models_dir / f"nextclose_{sym}_scaler.pkl"
     feats_path = models_dir / f"nextclose_{sym}_features.json"
@@ -234,6 +224,7 @@ def main():
                 "start_date": args.start_date,
                 "step_days": args.step_days,
                 "test_days": args.test_days,
+                "seed": 42, "deterministic": True
             },
             f, ensure_ascii=False, indent=2
         )

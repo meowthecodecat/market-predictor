@@ -1,0 +1,225 @@
+ts_utc,step,status,hp
+2025-10-28 10:28:06,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 10:28:06,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO"
+2025-10-28 10:28:06,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01180  MAE_val_terminal=0.00981  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02498  MAE_val_terminal=0.01980  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.02830  MAE_val_terminal=0.02300  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02517  MAE_val_terminal=0.02066  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01392  MAE_val_terminal=0.01108  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01301  MAE_val_terminal=0.01020  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01693  MAE_val_terminal=0.01369  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01608  MAE_val_terminal=0.01341  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:28:06,train_tab,AAPL,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,NVDA,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,AMD,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,TSLA,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,AMZN,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,GOOGL,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,MSFT,OK,Données insuffisantes.
+2025-10-28 10:28:06,train_tab,KO,OK,Données insuffisantes.
+2025-10-28 10:28:06,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 10:28:06,evaluate_backtest,OK,"symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d
+AAPL,2514,8.015176,0.901,0.387,0.001044,0.018380
+AMD,2514,118.114681,1.099,0.654,0.002578,0.037228
+AMZN,2514,6.356020,0.775,0.561,0.001006,0.020588
+GOOGL,2514,6.307984,0.839,0.443,0.000954,0.018051
+KO,2514,0.639597,0.364,0.375,0.000262,0.011433
+MSFT,2514,8.846610,0.991,0.376,0.001052,0.016852
+NVDA,2514,266.164281,1.370,0.664,0.002715,0.031449
+TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
+2025-10-28 10:28:06,predict,AAPL,OK,AAPL -> last_close=268.81 pred_close=265.42 d_pct=-1.26
+2025-10-28 10:28:06,predict,NVDA,OK,NVDA -> last_close=191.49 pred_close=192.96 d_pct=0.77
+2025-10-28 10:28:06,predict,AMD,OK,AMD -> last_close=259.67 pred_close=263.02 d_pct=1.29
+2025-10-28 10:28:06,predict,TSLA,OK,TSLA -> last_close=452.42 pred_close=453.07 d_pct=0.14
+2025-10-28 10:28:06,predict,AMZN,OK,AMZN -> last_close=226.97 pred_close=222.67 d_pct=-1.89
+2025-10-28 10:28:06,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=268.56 d_pct=-0.26
+2025-10-28 10:28:06,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=542.04 d_pct=1.98
+2025-10-28 10:28:06,predict,KO,OK,KO -> last_close=70.06 pred_close=70.83 d_pct=1.10
+2025-10-28 10:31:10,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 10:31:10,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO"
+2025-10-28 10:31:10,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01554  MAE_val_terminal=0.01242  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02746  MAE_val_terminal=0.02024  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.02903  MAE_val_terminal=0.02382  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02896  MAE_val_terminal=0.02286  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01786  MAE_val_terminal=0.01516  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01549  MAE_val_terminal=0.01317  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01273  MAE_val_terminal=0.00991  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_lstm,KO,OK,KO: RMSE_val_terminal=0.02107  MAE_val_terminal=0.01713  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}"
+2025-10-28 10:31:10,train_tab,AAPL,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,NVDA,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,AMD,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,TSLA,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,AMZN,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,GOOGL,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,MSFT,OK,Données insuffisantes.
+2025-10-28 10:31:10,train_tab,KO,OK,Données insuffisantes.
+2025-10-28 10:31:10,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 10:31:10,evaluate_backtest,OK,"symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d
+AAPL,2514,8.015176,0.901,0.387,0.001044,0.018380
+AMD,2514,118.114681,1.099,0.654,0.002578,0.037228
+AMZN,2514,6.356020,0.775,0.561,0.001006,0.020588
+GOOGL,2514,6.307984,0.839,0.443,0.000954,0.018051
+KO,2514,0.639597,0.364,0.375,0.000262,0.011433
+MSFT,2514,8.846610,0.991,0.376,0.001052,0.016852
+NVDA,2514,266.164281,1.370,0.664,0.002715,0.031449
+TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
+2025-10-28 10:31:10,predict,AAPL,OK,AAPL -> last_close=268.81 pred_close=267.20 d_pct=-0.60
+2025-10-28 10:31:10,predict,NVDA,OK,NVDA -> last_close=191.49 pred_close=193.84 d_pct=1.23
+2025-10-28 10:31:10,predict,AMD,OK,AMD -> last_close=259.67 pred_close=272.24 d_pct=4.84
+2025-10-28 10:31:10,predict,TSLA,OK,TSLA -> last_close=452.42 pred_close=435.17 d_pct=-3.81
+2025-10-28 10:31:10,predict,AMZN,OK,AMZN -> last_close=226.97 pred_close=234.24 d_pct=3.20
+2025-10-28 10:31:10,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=268.40 d_pct=-0.32
+2025-10-28 10:31:10,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=554.12 d_pct=4.25
+2025-10-28 10:31:10,predict,KO,OK,KO -> last_close=70.06 pred_close=71.83 d_pct=2.52
+2025-10-28 10:48:09,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 10:48:09,collect,SKIPPED,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01316  MAE_val_terminal=0.01031  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02905  MAE_val_terminal=0.02406  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.03063  MAE_val_terminal=0.02309  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02526  MAE_val_terminal=0.01868  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01412  MAE_val_terminal=0.01146  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01455  MAE_val_terminal=0.01229  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01189  MAE_val_terminal=0.00891  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01529  MAE_val_terminal=0.01212  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,AAPL,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,NVDA,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,AMD,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,TSLA,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,AMZN,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,GOOGL,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,MSFT,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,train_tab,KO,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 10:48:09,evaluate_backtest,OK,"symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d
+AAPL,2514,8.015176,0.901,0.387,0.001044,0.018380
+AMD,2514,118.114681,1.099,0.654,0.002578,0.037228
+AMZN,2514,6.356020,0.775,0.561,0.001006,0.020588
+GOOGL,2514,6.307984,0.839,0.443,0.000954,0.018051
+KO,2514,0.639597,0.364,0.375,0.000262,0.011433
+MSFT,2514,8.846610,0.991,0.376,0.001052,0.016852
+NVDA,2514,266.164281,1.370,0.664,0.002715,0.031449
+TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
+2025-10-28 10:48:09,predict,AAPL,OK,AAPL -> last_close=268.81 pred_close=265.36 d_pct=-1.28,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,NVDA,OK,NVDA -> last_close=191.49 pred_close=195.04 d_pct=1.85,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,AMD,OK,AMD -> last_close=259.67 pred_close=266.08 d_pct=2.47,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,TSLA,OK,TSLA -> last_close=452.42 pred_close=446.27 d_pct=-1.36,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,AMZN,OK,AMZN -> last_close=226.97 pred_close=227.27 d_pct=0.13,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=261.86 d_pct=-2.75,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=531.47 d_pct=-0.01,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:48:09,predict,KO,OK,KO -> last_close=70.06 pred_close=68.46 d_pct=-2.28,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-28 10:51:32,collect,SKIPPED,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,AAPL,OK,AAPL: RMSE_val_terminal=0.01316  MAE_val_terminal=0.01031  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,NVDA,OK,NVDA: RMSE_val_terminal=0.02905  MAE_val_terminal=0.02406  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,AMD,OK,AMD: RMSE_val_terminal=0.03063  MAE_val_terminal=0.02309  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,TSLA,OK,TSLA: RMSE_val_terminal=0.02526  MAE_val_terminal=0.01868  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,AMZN,OK,AMZN: RMSE_val_terminal=0.01412  MAE_val_terminal=0.01146  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,GOOGL,OK,GOOGL: RMSE_val_terminal=0.01455  MAE_val_terminal=0.01229  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,MSFT,OK,MSFT: RMSE_val_terminal=0.01189  MAE_val_terminal=0.00891  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_lstm,KO,OK,KO: RMSE_val_terminal=0.01529  MAE_val_terminal=0.01212  N_seq=341,"{""time_step"": 30, ""epochs"": 20, ""fine_tune"": 12, ""lookback_days"": 540, ""half_life_days"": 90, ""start_date"": ""2019-01-01"", ""step_days"": 30, ""test_days"": 30}",8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,AAPL,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,NVDA,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,AMD,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,TSLA,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,AMZN,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,GOOGL,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,MSFT,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,train_tab,KO,OK,Données insuffisantes.,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.212935 2.611140 0.067226      82 165
+       0         -1 0.50  0.206322 2.540752 0.067226      81 165
+       0         -1 0.45  0.247412 2.506588 0.067454      97 165
+       0         -1 0.52  0.185100 2.433180 0.057581      71 165
+       0         -1 0.47  0.197265 2.308129 0.080780      90 165
+       0         -1 0.51  0.176389 2.287911 0.057392      75 165
+       0         -1 0.53  0.165573 2.241179 0.064007      68 165
+       0         -1 0.48  0.182866 2.172446 0.077373      87 165
+       1          1 0.49  1.261265 2.117566 0.106789     395 570
+       1          1 0.48  1.252386 2.096803 0.106789     404 570
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.611140  0.212935 0.067226      82 165
+       0          1 0.45 1.276094  0.727792 0.129299     548 672
+       1         -1 0.73 0.988919  0.030105 0.013390      10 268
+       1          1 0.49 2.117566  1.261265 0.106789     395 570
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-28 10:51:32,evaluate_backtest,OK,"symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d
+AAPL,2514,8.015176,0.901,0.387,0.001044,0.018380
+AMD,2514,118.114681,1.099,0.654,0.002578,0.037228
+AMZN,2514,6.356020,0.775,0.561,0.001006,0.020588
+GOOGL,2514,6.307984,0.839,0.443,0.000954,0.018051
+KO,2514,0.639597,0.364,0.375,0.000262,0.011433
+MSFT,2514,8.846610,0.991,0.376,0.001052,0.016852
+NVDA,2514,266.164281,1.370,0.664,0.002715,0.031449
+TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
+2025-10-28 10:51:32,predict,AAPL,OK,AAPL -> last_close=268.81 pred_close=265.36 d_pct=-1.28,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,NVDA,OK,NVDA -> last_close=191.49 pred_close=195.04 d_pct=1.85,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,AMD,OK,AMD -> last_close=259.67 pred_close=266.08 d_pct=2.47,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,TSLA,OK,TSLA -> last_close=452.42 pred_close=446.27 d_pct=-1.36,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,AMZN,OK,AMZN -> last_close=226.97 pred_close=227.27 d_pct=0.13,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=261.86 d_pct=-2.75,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=531.47 d_pct=-0.01,8530dbe5eb79c8c2e0bb4350d0515e5a
+2025-10-28 10:51:32,predict,KO,OK,KO -> last_close=70.06 pred_close=68.46 d_pct=-2.28,8530dbe5eb79c8c2e0bb4350d0515e5a

@@ -27,5 +27,7 @@
   "half_life_days": 90,
   "start_date": "2019-01-01",
   "step_days": 30,
-  "test_days": 30
+  "test_days": 30,
+  "seed": 42,
+  "deterministic": true
 }

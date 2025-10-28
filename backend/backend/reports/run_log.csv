@@ -147,3 +147,49 @@ TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
 2025-10-28 10:09:43,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=265.19 d_pct=-1.52
 2025-10-28 10:09:43,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=537.41 d_pct=1.11
 2025-10-28 10:09:43,predict,KO,OK,KO -> last_close=70.06 pred_close=68.16 d_pct=-2.72
+2025-10-28 10:16:12,collect,OK,"AAPL,NVDA,AMD,TSLA,AMZN,GOOGL,MSFT,KO"
+2025-10-28 10:16:12,train_lstm,AAPL,OK,540,90,2019-01-01,30,30,30,20,12,AAPL: RMSE_val_terminal=0.01602  MAE_val_terminal=0.01236  N_seq=341
+2025-10-28 10:16:12,train_lstm,NVDA,OK,540,90,2019-01-01,30,30,30,20,12,NVDA: RMSE_val_terminal=0.02087  MAE_val_terminal=0.01699  N_seq=341
+2025-10-28 10:16:12,train_lstm,AMD,OK,540,90,2019-01-01,30,30,30,20,12,AMD: RMSE_val_terminal=0.02806  MAE_val_terminal=0.02249  N_seq=341
+2025-10-28 10:16:12,train_lstm,TSLA,OK,540,90,2019-01-01,30,30,30,20,12,TSLA: RMSE_val_terminal=0.03516  MAE_val_terminal=0.02995  N_seq=341
+2025-10-28 10:16:12,train_lstm,AMZN,OK,540,90,2019-01-01,30,30,30,20,12,AMZN: RMSE_val_terminal=0.02117  MAE_val_terminal=0.01619  N_seq=341
+2025-10-28 10:16:12,train_lstm,GOOGL,OK,540,90,2019-01-01,30,30,30,20,12,GOOGL: RMSE_val_terminal=0.00972  MAE_val_terminal=0.00801  N_seq=341
+2025-10-28 10:16:12,train_lstm,MSFT,OK,540,90,2019-01-01,30,30,30,20,12,MSFT: RMSE_val_terminal=0.01215  MAE_val_terminal=0.00993  N_seq=341
+2025-10-28 10:16:12,train_lstm,KO,OK,540,90,2019-01-01,30,30,30,20,12,KO: RMSE_val_terminal=0.01617  MAE_val_terminal=0.01329  N_seq=341
+2025-10-28 10:16:12,train_tab,AAPL,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,NVDA,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,AMD,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,TSLA,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,AMZN,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,GOOGL,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,MSFT,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,train_tab,KO,OK,540,90,2019-01-01,30,30,Trop peu de données après nettoyage.
+2025-10-28 10:16:12,threshold_sweep,FAIL(1),0.0002,"2025-10-28 11:17:51.364010: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-28 11:17:53.967432: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\threshold_sweep.py"", line 143, in <module>
+    main()
+  File ""C:\Users\arthu\market-predictor\backend\scripts\threshold_sweep.py"", line 65, in main
+    Xte = np.load(DATA / ""X_test_lstm.npy"")
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\numpy\lib\_npyio_impl.py"", line 454, in load
+    fid = stack.enter_context(open(os.fspath(file), ""rb""))
+                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'C:\\Users\\arthu\\market-predictor\\backend\\data\\X_test_lstm.npy'"
+2025-10-28 10:16:12,evaluate_backtest,OK,"symbol,n_days,bh_cum,sharpe,maxdd,avg_ret_1d,vol_1d
+AAPL,2514,8.015176,0.901,0.387,0.001044,0.018380
+AMD,2514,118.114681,1.099,0.654,0.002578,0.037228
+AMZN,2514,6.356020,0.775,0.561,0.001006,0.020588
+GOOGL,2514,6.307984,0.839,0.443,0.000954,0.018051
+KO,2514,0.639597,0.364,0.375,0.000262,0.011433
+MSFT,2514,8.846610,0.991,0.376,0.001052,0.016852
+NVDA,2514,266.164281,1.370,0.664,0.002715,0.031449
+TSLA,2514,30.866549,0.881,0.736,0.002072,0.037348"
+2025-10-28 10:16:12,predict,AAPL,OK,AAPL -> last_close=268.81 pred_close=272.84 d_pct=1.50
+2025-10-28 10:16:12,predict,NVDA,OK,NVDA -> last_close=191.49 pred_close=193.02 d_pct=0.80
+2025-10-28 10:16:12,predict,AMD,OK,AMD -> last_close=259.67 pred_close=254.80 d_pct=-1.88
+2025-10-28 10:16:12,predict,TSLA,OK,TSLA -> last_close=452.42 pred_close=433.88 d_pct=-4.10
+2025-10-28 10:16:12,predict,AMZN,OK,AMZN -> last_close=226.97 pred_close=231.67 d_pct=2.07
+2025-10-28 10:16:12,predict,GOOGL,OK,GOOGL -> last_close=269.27 pred_close=266.24 d_pct=-1.13
+2025-10-28 10:16:12,predict,MSFT,OK,MSFT -> last_close=531.52 pred_close=542.56 d_pct=2.08
+2025-10-28 10:16:12,predict,KO,OK,KO -> last_close=70.06 pred_close=76.88 d_pct=9.73

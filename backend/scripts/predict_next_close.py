@@ -1,133 +1,101 @@
+# FILENAME: scripts/predict_next_close.py
 # -*- coding: utf-8 -*-
 """
-Prédit le prochain close pour un symbole en réutilisant EXACTEMENT
-les features et le scaler sauvegardés à l'entraînement.
-Gère aussi les anciens fichiers features.json qui contiennent une simple liste.
+Prédit le close J+1 pour un ticker donné en utilisant le LSTM sauvegardé:
+- Charge models/nextclose_{SYM}.keras
+- Charge models/nextclose_{SYM}_scaler.pkl
+- Charge models/nextclose_{SYM}_features.json
+- Recalcule les features, applique lookback si présent, scale, séquence
+- Imprime:  "{SYM} -> last_close=... pred_close=... d_pct=..."
+
+Usage:
+  python scripts/predict_next_close.py --symbol AAPL --time-step 30 --alpha 0.6
 """
 from __future__ import annotations
-
-import argparse, json, os, sys, pickle
+import argparse, json, pickle
 from pathlib import Path
 import numpy as np
 import pandas as pd
-
-os.environ.setdefault("TF_CPP_MIN_LOG_LEVEL", "2")
 import tensorflow as tf
 
-# local
+import sys
 sys.path.append(str(Path(__file__).resolve().parent))
-from data_preprocessing import make_features_from_df
+from data_preprocessing import make_features
 
 ROOT = Path(__file__).resolve().parents[1]
-DATA_DIR = ROOT / "data"
-MODELS_DIR = ROOT / "models"
+DATA = ROOT / "data"
+MODELS = ROOT / "models"
 
-def _load_pickle(p):
-    if not Path(p).exists():
-        return None
-    with open(p, "rb") as f:
-        return pickle.load(f)
+def _load_prices(symbol: str) -> pd.DataFrame:
+    p = DATA / f"{symbol}_historical_prices.csv"
+    if not p.exists():
+        raise FileNotFoundError(f"Données introuvables: {p}")
+    df = pd.read_csv(p)
+    df = df.rename(columns={c: c.capitalize() for c in df.columns})
+    df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+    df = df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
+    return df
 
-def _make_last_sequence(X_all: np.ndarray, T: int) -> np.ndarray:
-    if len(X_all) < T:
-        return np.empty((0, T, X_all.shape[1]), dtype=float)
-    return X_all[-T:, :].reshape(1, T, X_all.shape[1])
+def _to_seq_last(X2: np.ndarray, T: int) -> np.ndarray:
+    if len(X2) < T:
+        raise ValueError(f"Pas assez d'observations pour T={T} (n={len(X2)})")
+    return X2[-T:, :][None, :, :]
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--symbol", required=True)
-    p.add_argument("--time-step", type=int, default=30)
-    p.add_argument("--alpha", type=float, default=0.6)
-    p.add_argument("--data-dir", default=str(DATA_DIR))
-    p.add_argument("--models-dir", default=str(MODELS_DIR))
-    p.add_argument("--debug", action="store_true")
-    args = p.parse_args()
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--symbol", required=True)
+    ap.add_argument("--time-step", type=int, default=30)
+    ap.add_argument("--alpha", type=float, default=0.6, help="pondération éventuelle d’un ensemble; ici non utilisé")
+    args = ap.parse_args()
 
     sym = args.symbol.upper()
-    data_path = Path(args.data_dir) / f"{sym}_historical_prices.csv"
-    if not data_path.exists():
-        print(f"{sym} -> ERREUR: données introuvables: {data_path}")
-        return 0
+    # chemins modèles
+    model_path = MODELS / f"nextclose_{sym}.keras"
+    scaler_path = MODELS / f"nextclose_{sym}_scaler.pkl"
+    feats_path  = MODELS / f"nextclose_{sym}_features.json"
 
-    # Artefacts
-    lstm_path  = Path(args.models_dir) / f"nextclose_{sym}.keras"
-    scaler_path = Path(args.models_dir) / f"nextclose_{sym}_scaler.pkl"
-    feats_path  = Path(args.models_dir) / f"nextclose_{sym}_features.json"
+    if not model_path.exists() or not scaler_path.exists() or not feats_path.exists():
+        print(f"{sym} -> modèles/scaler/features manquants")
+        return 1
 
-    if args.debug:
-        print(f"{sym} DEBUG -> lstm={lstm_path if lstm_path.exists() else None}  "
-              f"tab=None  scaler={scaler_path if scaler_path.exists() else None}")
-    if not lstm_path.exists() or not scaler_path.exists() or not feats_path.exists():
-        print(f"{sym} -> ERREUR: artefacts manquants (modèle/scaler/features).")
-        return 0
-
-    # Charger méta-features. Supporte dict moderne et liste legacy.
     with open(feats_path, "r", encoding="utf-8") as f:
         meta = json.load(f)
-    if isinstance(meta, list):
-        use_cols = meta
-        T_train = args.time_step
-    elif isinstance(meta, dict):
-        use_cols = meta.get("features", [])
-        T_train  = int(meta.get("time_step", args.time_step))
-    else:
-        print(f"{sym} -> ERREUR: format features.json invalide.")
-        return 0
+    use_cols = meta.get("features", [])
+    T = int(meta.get("time_step", args.time_step))
 
-    # Données + features
-    raw = pd.read_csv(data_path)
-    raw = raw.rename(columns={c: c.capitalize() for c in raw.columns})
-    raw["Date"] = pd.to_datetime(raw["Date"], errors="coerce")
-    feat_df, _ = make_features_from_df(raw)
+    # données + features
+    raw = _load_prices(sym)
+    feat_df, _ = make_features(raw, market_df=None, earnings_dates=None)
 
-    # Aligner colonnes dans le même ordre que l'entraînement
-    missing = [c for c in use_cols if c not in feat_df.columns]
-    if len(missing) > 0:
-        if args.debug:
-            print(f"{sym} DEBUG -> features manquantes: {missing}")
-        print(f"{sym} -> ERREUR: mismatch features entre train et prédiction.")
-        return 0
+    # dernière valeur connue
+    last_close = float(raw["Close"].iloc[-1])
 
-    X_all_df = feat_df[use_cols].copy().astype(float)
-    scaler = _load_pickle(scaler_path)
-    try:
-        X_all = scaler.transform(X_all_df)
-    except Exception:
-        X_all = X_all_df.to_numpy(dtype=float)
+    # sélection colonnes
+    if not use_cols:
+        # fallback: toutes numériques sauf Close
+        use_cols = [c for c in feat_df.select_dtypes(include=[np.number]).columns if c != "Close"]
 
-    # last close
-    if "Close" not in raw.columns:
-        print(f"{sym} -> ERREUR: colonne Close manquante.")
-        return 0
-    last_close = float(pd.to_numeric(raw["Close"], errors="coerce").dropna().iloc[-1])
+    X = feat_df[use_cols].astype(float).to_numpy()
+    # scaler
+    with open(scaler_path, "rb") as f:
+        scaler = pickle.load(f)
+    Xs = scaler.transform(X)
 
-    # séquence
-    X_seq = _make_last_sequence(np.asarray(X_all, dtype=float), T_train)
-    if X_seq.size == 0:
-        print(f"{sym} -> ERREUR: pas assez d'observations pour time_step={T_train}.")
-        return 0
+    # séquence finale
+    X_last = _to_seq_last(Xs, T)
 
     # modèle
-    try:
-        lstm = tf.keras.models.load_model(lstm_path, compile=False)
-    except Exception:
-        print(f"{sym} -> ERREUR: chargement modèle impossible.")
-        return 0
+    model = tf.keras.models.load_model(model_path)
+    pred_ret = float(model.predict(X_last, verbose=0).reshape(-1)[0])
 
-    try:
-        ret_hat = float(np.ravel(lstm.predict(X_seq, verbose=0))[-1])
-    except Exception:
-        print(f"{sym} -> ERREUR: prédiction impossible.")
-        return 0
+    # close prédit J+1
+    pred_close = last_close * (1.0 + pred_ret)
+    d_pct = (pred_close / last_close) - 1.0
 
-    pred_close = last_close * (1.0 + ret_hat)
-    d_pct = (pred_close / last_close - 1.0) * 100.0
-
-    if args.debug:
-        print(f"{sym} DEBUG -> cols_used={len(use_cols)}  X_all shape={X_all_df.shape}  T={T_train}")
-
-    print(f"{sym} -> last_close={last_close:.2f}  pred_close={pred_close:.2f}  d_pct={d_pct:.2f}%  (alpha={args.alpha:.2f})")
+    # format EXACT pour run_all.py
+    print(f"{sym} -> last_close={last_close:.2f} pred_close={pred_close:.2f} d_pct={d_pct*100:.2f}")
     return 0
 
 if __name__ == "__main__":
-    sys.exit(main())
+    import sys as _sys
+    _sys.exit(main())

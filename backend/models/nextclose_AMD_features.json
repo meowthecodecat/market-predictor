@@ -6,7 +6,26 @@
     "hl_range",
     "sma5_div_close",
     "sma20_div_close",
-    "ema12_div_ema26"
+    "ema12_div_ema26",
+    "rsi_14",
+    "vol_z",
+    "trend_regime",
+    "vol_regime",
+    "market_vol",
+    "dow",
+    "month",
+    "month_end_flag",
+    "earnings_flag",
+    "overnight_gap",
+    "intraday_return",
+    "gap_fill",
+    "volatility_rolling",
+    "volume_surge"
   ],
-  "time_step": 40
+  "time_step": 30,
+  "lookback_days": 540,
+  "half_life_days": 90,
+  "start_date": "2019-01-01",
+  "step_days": 30,
+  "test_days": 30
 }

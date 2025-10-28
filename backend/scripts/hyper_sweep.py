@@ -1,13 +1,26 @@
+# FILENAME: scripts/hyper_sweep.py
 # -*- coding: utf-8 -*-
+"""
+Hyperparameter sweep élargi:
+- Ajoute lookback_days, half_life_days, start_date
+- Conserve structure parallèle (grid/random)
+- Lance les jobs sur train_next_close.py et train_tabular_baseline.py
+
+Sorties:
+  reports/hyper_<timestamp>/classif_results.csv
+  reports/hyper_<timestamp>/reg_results.csv
+  reports/hyper_<timestamp>/best.json
+"""
+
 import itertools, random, re, csv, json, sys, subprocess
 from pathlib import Path
 from datetime import datetime, timezone
 from multiprocessing import Pool, cpu_count
 
 # === chemins ===
-SCRIPTS_DIR = Path(__file__).resolve().parent                  # backend/scripts
-BACKEND = SCRIPTS_DIR.parent                                   # backend
-ROOT = BACKEND.parent                                          # projet
+SCRIPTS_DIR = Path(__file__).resolve().parent
+BACKEND = SCRIPTS_DIR.parent
+ROOT = BACKEND.parent
 DATA = ROOT / "data"
 OUT = BACKEND / "reports"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -15,9 +28,15 @@ OUT.mkdir(parents=True, exist_ok=True)
 TICKERS = ["AAPL","NVDA","AMD","TSLA","AMZN","GOOGL","MSFT","KO"]
 
 CFG = {
-    "mode": "grid",
+    "mode": "grid",           # "grid" ou "random"
     "n_random": 200,
     "parallel_workers": max(1, cpu_count() // 2),
+    # Hyperparams supplémentaires
+    "meta": {
+        "lookback_days": [360, 540, 720],
+        "half_life_days": [30, 60, 90],
+        "start_date": ["2018-01-01","2019-01-01"]
+    },
     "classif": {
         "threshold": [0.45,0.50,0.55,0.60],
         "time_step": [20,30,40],
@@ -40,6 +59,7 @@ CSV_CLASSIF = RUN_DIR / "classif_results.csv"
 CSV_REG = RUN_DIR / "reg_results.csv"
 JSON_BEST = RUN_DIR / "best.json"
 
+# === Helpers ===
 def _run_py(script: Path, args: list[str], capture: bool = True):
     cmd = [sys.executable, str(script), *map(str, args)]
     res = subprocess.run(cmd, cwd=ROOT, text=True, capture_output=capture)
@@ -59,42 +79,47 @@ def random_combos(space: dict, n: int):
     for _ in range(n):
         yield {k: random.choice(pool) for k, pool in zip(keys, pools)}
 
-# === jobs top-level (pickle-safe) ===
-def eval_classif(h: dict):
-    ok, out = _run_py(
-        SCRIPTS_DIR / "evaluate_backtest.py",
-        ["--threshold", h["threshold"], "--label", h["label"], "--fees", h["fees"], "--cooldown", h["cooldown"]],
-    )
-    m_perf = re.search(r"Perf cumulée\s*:\s*([-\d\.]+)%", out or "")
-    m_sharpe = re.search(r"Sharpe approx\s*:\s*([-\d\.]+)", out or "")
-    m_mdd = re.search(r"Max drawdown\s*:\s*([-\d\.]+)%", out or "")
-    perf = float(m_perf.group(1)) if m_perf else float("nan")
-    sharpe = float(m_sharpe.group(1)) if m_sharpe else float("nan")
-    mdd = float(m_mdd.group(1)) if m_mdd else float("nan")
-    return {**h, "perf_pct": perf, "sharpe": sharpe, "mdd_pct": mdd, "stdout": (out or "").strip()}
-
+# === jobs top-level ===
 def eval_reg(h: dict):
+    # injection des meta hyperparams dans l'appel train_next_close.py
     rmse_list, mae_list = [], []
     for t in TICKERS:
-        ok, out = _run_py(
-            SCRIPTS_DIR / "train_next_close.py",
-            ["--symbol", t, "--time-step", h["time_step"], "--epochs", h["epochs"], "--fine-tune-epochs", h["fine_tune_epochs"]],
-        )
-        m_rmse = re.search(r"RMSE[_\s]?val\s*=\s*([0-9\.]+)", out or "", re.I)
-        m_mae  = re.search(r"MAE[_\s]?val\s*=\s*([0-9\.]+)", out or "", re.I)
+        args = [
+            "--symbol", t,
+            "--time-step", h["time_step"],
+            "--epochs", h["epochs"],
+            "--fine-tune-epochs", h["fine_tune_epochs"],
+            "--lookback-days", h["lookback_days"],
+            "--half-life-days", h["half_life_days"],
+            "--start-date", h["start_date"],
+        ]
+        ok, out = _run_py(SCRIPTS_DIR / "train_next_close.py", args)
+        m_rmse = re.search(r"RMSE_val_terminal\s*=\s*([0-9\.]+)", out or "", re.I)
+        m_mae  = re.search(r"MAE_val_terminal\s*=\s*([0-9\.]+)", out or "", re.I)
         if m_rmse: rmse_list.append(float(m_rmse.group(1)))
         if m_mae:  mae_list.append(float(m_mae.group(1)))
 
     rmse = sum(rmse_list)/len(rmse_list) if rmse_list else float("nan")
     mae  = sum(mae_list)/len(mae_list) if mae_list else float("nan")
 
-    _run_py(
-        SCRIPTS_DIR / "ensemble_predict.py",
-        ["--symbols", ",".join(TICKERS), "--threshold", 0.50, "--label", "up_1d",
-         "--time-step", h["time_step"], "--alpha", h["alpha"]],
-        capture=False,
-    )
-    return {**h, "rmse_val": rmse, "mae_val": mae, "stdout": ""}
+    return {**h, "rmse_val": rmse, "mae_val": mae}
+
+def eval_classif(h: dict):
+    # utilise train_tabular_baseline avec meta params
+    args = [
+        "--symbol", "AAPL",
+        "--lookback-days", h["lookback_days"],
+        "--half-life-days", h["half_life_days"],
+        "--start-date", h["start_date"],
+    ]
+    ok, out = _run_py(SCRIPTS_DIR / "train_tabular_baseline.py", args)
+    m_acc = re.search(r"acc\s*[:=]\s*([0-9\.]+)", out or "")
+    m_f1 = re.search(r"f1\s*[:=]\s*([0-9\.]+)", out or "")
+    m_auc = re.search(r"auc\s*[:=]\s*([0-9\.]+)", out or "")
+    acc = float(m_acc.group(1)) if m_acc else float("nan")
+    f1  = float(m_f1.group(1)) if m_f1 else float("nan")
+    auc = float(m_auc.group(1)) if m_auc else float("nan")
+    return {**h, "acc": acc, "f1": f1, "auc": auc}
 
 def write_csv(path: Path, rows: list[dict], header: list[str]):
     write_header = not path.exists()
@@ -103,31 +128,35 @@ def write_csv(path: Path, rows: list[dict], header: list[str]):
         if write_header: w.writeheader()
         for r in rows: w.writerow(r)
 
+# === sweep ===
 def sweep(section: str):
-    space = CFG[section]
-    gen = all_combos(space) if CFG["mode"]=="grid" else random_combos(space, CFG["n_random"])
+    base_space = CFG[section]
+    meta_space = CFG["meta"]
+    merged_space = {**base_space, **meta_space}
+
+    gen = all_combos(merged_space) if CFG["mode"]=="grid" else random_combos(merged_space, CFG["n_random"])
     fn = eval_classif if section=="classif" else eval_reg
-    header = list(space.keys()) + (["perf_pct","sharpe","mdd_pct","stdout"] if section=="classif"
-                                   else ["rmse_val","mae_val","stdout"])
+    header = list(merged_space.keys()) + (["acc","f1","auc"] if section=="classif" else ["rmse_val","mae_val"])
     csv_path = CSV_CLASSIF if section=="classif" else CSV_REG
 
     jobs = list(gen)
     results = []
     with Pool(processes=CFG["parallel_workers"]) as pool:
-        for r in pool.imap_unordered(fn, jobs):   # <- plus de closure locale
+        for r in pool.imap_unordered(fn, jobs):
             results.append(r)
             write_csv(csv_path, [r], header)
 
+    # tri
     if section=="classif":
-        results = [r for r in results if not any(x!=x for x in [r["sharpe"], r["perf_pct"]])]
-        results.sort(key=lambda r: (r["sharpe"], r["perf_pct"]), reverse=True)
+        results = [r for r in results if not any(x!=x for x in [r["f1"], r["acc"]])]
+        results.sort(key=lambda r: (r["f1"], r["acc"]), reverse=True)
     else:
         results = [r for r in results if not any(x!=x for x in [r["rmse_val"], r["mae_val"]])]
         results.sort(key=lambda r: (r["rmse_val"], r["mae_val"]))
     return results[0] if results else None
 
 def main():
-    _run_py(SCRIPTS_DIR / "data_collection.py", ["--symbols", ",".join(TICKERS), "--years", 10], capture=False)
+    print("=== Sweep Hyperparams ===")
     best_c = sweep("classif")
     best_r = sweep("reg")
     with JSON_BEST.open("w", encoding="utf-8") as f:

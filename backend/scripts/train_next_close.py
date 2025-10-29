@@ -1,4 +1,4 @@
-# FILENAME: scripts/train_next_close.py
+# backend/scripts/train_next_close.py
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 import os, random, numpy as np
@@ -40,7 +40,8 @@ def _safe_rmse(y_true, y_pred) -> float:
 def _build_lstm(T: int, D: int, lr: float = 1e-3) -> tf.keras.Model:
     inp = tf.keras.layers.Input(shape=(T, D))
     x = tf.keras.layers.LSTM(64)(inp)
-    x = tf.keras.layers.Dropout(0.2)(x)
+    # Dropout désactivé pour déterminisme strict
+    # x = tf.keras.layers.Dropout(0.2)(x)
     x = tf.keras.layers.Dense(32, activation="relu")(x)
     out = tf.keras.layers.Dense(1)(x)
     model = tf.keras.Model(inp, out)

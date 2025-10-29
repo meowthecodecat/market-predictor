@@ -64,7 +64,7 @@ def _features_structure(df: pd.DataFrame) -> tuple[pd.DataFrame, List[str]]:
     prev_close = close.shift(1)
     tr = pd.concat([(high - low).abs(), (high - prev_close).abs(), (low - prev_close).abs()], axis=1).max(axis=1)
     d["true_range"] = tr.fillna(0.0)
-    d["ATR_14"] = d["true_range"].rolling(14, min_periods=1).mean().fillna(method="bfill").fillna(0.0)
+    d["ATR_14"] = d["true_range"].rolling(14, min_periods=1).mean().bfill().fillna(0.0)
 
     for c in ["High","Low","Volume"]:
         if c not in d.columns: d[c] = 0.0

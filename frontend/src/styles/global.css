@@ -1,84 +1,76 @@
-html, body { width:100%; height:100%; margin:0; }
-body { position: relative; background:#0b0f17; }  /* crée le contexte pour z-index:-1 */
+/* Tailwind */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
+/* ===== Design tokens ===== */
 :root{
-  /* texte */
-  --fg: #f3f4f6;            /* texte principal */
-  --fg-muted: #cbd5e1;      /* texte secondaire */
-  /* accents */
-  --accent: #60a5fa;        /* bleu */
-  --accent-2: #a78bfa;      /* violet */
-  --ok: #22c55e;            /* vert */
-  --ko: #ef4444;            /* rouge */
-  /* verre liquide */
-  --lg-bg: rgba(17,23,41,.55);
-  --lg-br: 16px;
-  --lg-border: 1px solid rgba(255,255,255,.10);
-  --lg-blur: blur(14px) saturate(160%);
-  --lg-shadow: 0 12px 40px rgba(0,0,0,.35);
-  --lg-glow: inset 0 1px 0 rgba(255,255,255,.18);
+  --fg:#f3f4f6; --fg-muted:#cbd5e1;
+  --accent:#60a5fa; --accent-2:#a78bfa;
+  --ok:#22c55e; --ko:#ef4444;
+  --lg-bg:rgba(17,23,41,.55);
+  --lg-br:16px;
+  --lg-border:1px solid rgba(255,255,255,.10);
+  --lg-blur:blur(14px) saturate(160%);
+  --lg-shadow:0 12px 40px rgba(0,0,0,.35);
+  --lg-glow:inset 0 1px 0 rgba(255,255,255,.18);
 }
-:root.theme-ocean{ --accent:#38bdf8; --accent-2:#60a5fa; }
-:root.theme-grape{ --accent:#a78bfa; --accent-2:#60a5fa; }
 
+/* ===== Font ===== */
+@font-face{
+  font-family:"InterVar";
+  src:url("/fonts/Inter.woff2") format("woff2");
+  font-weight:100 900; font-display:swap; font-style:normal;
+}
 
-/* Soft texture “dark veil” */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  background: repeating-linear-gradient(
+/* ===== Base ===== */
+@layer base{
+  html{ background:#0b0f17; }
+  body{
+    background:transparent;      /* laisse voir le canvas */
+    color:var(--fg);
+    font-family:"InterVar", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial;
+    position:relative; z-index:0;
+  }
+  h1,h2,h3,strong{ color:var(--fg); }
+  a{ color:var(--accent); }
+}
+
+/* Reduced motion */
+@media (prefers-reduced-motion: reduce){
+  .motion-reduce *{ animation:none !important; transition:none !important; }
+}
+
+/* Utilities */
+@layer utilities{
+  .glass{ @apply bg-white/5 backdrop-blur-md border border-white/10; }
+  .focus-ring{ @apply outline-none ring-2 ring-blue-500/50 ring-offset-0; }
+}
+
+/* Scrollbar */
+*::-webkit-scrollbar{ width:10px; height:10px; }
+*::-webkit-scrollbar-thumb{ background:rgba(255,255,255,.1); border-radius:999px; }
+*::-webkit-scrollbar-track{ background:transparent; }
+
+/* Page fade */
+.page-enter{ opacity:0; transform:translateY(4px); }
+.page-enter-active{ opacity:1; transform:translateY(0); transition:all .35s ease; }
+
+/* ===== Optional texture overlay (sous le contenu) ===== */
+body::before{
+  content:"";
+  position:fixed; inset:0; pointer-events:none;
+  z-index:-1;
+  background:repeating-linear-gradient(
     45deg,
     rgba(255,255,255,0.02) 0px,
     rgba(255,255,255,0.02) 1px,
     transparent 1px,
     transparent 4px
   );
-  mix-blend-mode: overlay;
-  z-index: 0;
+  mix-blend-mode:overlay;
 }
 
-/* Scrollbar minimal */
-*::-webkit-scrollbar { width: 10px; height: 10px; }
-*::-webkit-scrollbar-thumb { background: rgba(255,255,255,.12); border-radius: 999px; }
-*::-webkit-scrollbar-track { background: transparent; }
-
-:root{
-  --lg-bg: rgba(17,23,41,.55);
-  --lg-br: 16px;
-  --lg-border: 1px solid rgba(255,255,255,.10);
-  --lg-blur: blur(14px) saturate(160%);
-  --lg-shadow: 0 12px 40px rgba(0,0,0,.35);
-  --lg-glow: inset 0 1px 0 rgba(255,255,255,.18);
-}
-.lg-pane{
-  position: relative;
-  border-radius: var(--lg-br);
-  background: var(--lg-bg);
-  border: var(--lg-border);
-  box-shadow: var(--lg-shadow), var(--lg-glow);
-  backdrop-filter: var(--lg-blur);
-  -webkit-backdrop-filter: var(--lg-blur);
-}
-.lg-chip{
-  background: rgba(255,255,255,.06);
-  border: 1px solid rgba(255,255,255,.14);
-  border-radius: 999px;
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.preload-placeholder {
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  background: rgba(17,23,41,0.65);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-.motion-blur-transition {
-  transition: filter .3s ease, opacity .3s ease;
-  filter: saturate(130%) brightness(105%);
-}
+/* App layers */
+.app-shell{ position:relative; background:transparent; z-index:1; }
+.app-shell__main{ position:relative; z-index:1; }

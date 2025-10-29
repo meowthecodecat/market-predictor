@@ -28,9 +28,9 @@
     "bias20_lag1",
     "hit20_lag1"
   ],
-  "time_step": 20,
-  "lookback_days": 360,
-  "half_life_days": 90,
+  "time_step": 30,
+  "lookback_days": 720,
+  "half_life_days": 30,
   "start_date": "2018-01-01",
   "step_days": 30,
   "test_days": 30,

@@ -1,4 +1,4 @@
-# FILENAME: scripts/train_tabular_baseline.py
+# backend/scripts/train_tabular_baseline.py
 # -*- coding: utf-8 -*-
 from __future__ import annotations
 import os, random, numpy as np
@@ -86,7 +86,9 @@ def main():
 
     X = feats_df[use_cols].astype(float)
     df_xy = pd.concat([feats_df[["Date"]], X, y.rename("y")], axis=1).dropna()
-    if len(df_xy) < 400:
+
+    MIN_ROWS = 120
+    if len(df_xy) < MIN_ROWS:
         print("Données insuffisantes."); return
 
     X = df_xy[use_cols].to_numpy(dtype=float)
@@ -96,6 +98,8 @@ def main():
     tr_idx, va_idx = chronological_train_test_split(df_xy, test_ratio=0.2)
     if len(va_idx) < 50:
         tr_idx, va_idx = np.arange(len(df_xy)-100), np.arange(len(df_xy)-100, len(df_xy))
+    if len(tr_idx) < 50:
+        print("Données insuffisantes."); return
 
     scaler = StandardScaler()
     scaler.fit(X[tr_idx])
@@ -119,9 +123,8 @@ def main():
     pd.DataFrame([rec]).to_csv(DATA / f"gbm_cv_report_{sym}.csv", index=False)
     print(rec)
 
-    import joblib as _jb
-    _jb.dump({"scaler": scaler, "model": base, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}.pkl")
-    _jb.dump({"scaler": scaler, "model": calib, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}_calibrated.pkl")
+    joblib.dump({"scaler": scaler, "model": base, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}.pkl")
+    joblib.dump({"scaler": scaler, "model": calib, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}_calibrated.pkl")
     print(f"Saved: {MODELS / f'tabular_gbm_{sym}.pkl'}")
     print(f"Saved: {MODELS / f'tabular_gbm_{sym}_calibrated.pkl'}")
 

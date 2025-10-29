@@ -756,3 +756,825 @@ ret_lstm=-0.00745 sigma=0.01690 CI90%=[523.01,553.06]",c7699202170f9fb0618fe40c4
 ret_lstm=-0.00844 sigma=0.01145 CI90%=[68.25,70.89]",c7699202170f9fb0618fe40c437ff209
 2025-10-29 08:57:50,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
 2025-10-29 08:57:50,collect,OK,87371643320445a1fd1a7faa2ef9d2fb
+2025-10-29 13:58:48,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 13:58:48,collect,OK,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,evaluate_predictions,OK,Updated: C:\Users\arthu\market-predictor\backend\data\model_errors.csv (16 rows)
+2025-10-29 13:58:48,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,AAPL,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,NVDA,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,AMD,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,TSLA,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,AMZN,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,GOOGL,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,MSFT,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,train_tab,KO,OK,Données insuffisantes.,15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.243601 2.882427 0.067226      84 167
+       0         -1 0.50  0.236821 2.813458 0.067226      83 167
+       0         -1 0.45  0.278950 2.739061 0.067454      99 167
+       0         -1 0.47  0.227536 2.571044 0.080780      92 167
+       0         -1 0.48  0.212773 2.439397 0.077373      89 167
+       0         -1 0.52  0.185100 2.418312 0.057581      71 167
+       0         -1 0.46  0.216897 2.322983 0.079857      97 167
+       0         -1 0.51  0.176389 2.273968 0.057392      75 167
+       0         -1 0.53  0.165573 2.227533 0.064007      68 167
+       1          1 0.49  1.276571 2.136914 0.106789     395 569
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.882427  0.243601 0.067226      84 167
+       0          1 0.45 1.259586  0.711457 0.129299     546 670
+       1         -1 0.73 0.987079  0.030105 0.013390      10 269
+       1          1 0.49 2.136914  1.276571 0.106789     395 569
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.243256  0.408187 0.099301     157 375"
+2025-10-29 13:58:48,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.39%  CAGR=1.21%
+NVDA  Sharpe=0.88  MaxDD=-3.95%  CAGR=38.34%
+AMD  Sharpe=0.83  MaxDD=-1.24%  CAGR=7.90%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.37%
+AMZN  Sharpe=0.22  MaxDD=-0.21%  CAGR=0.26%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.79  MaxDD=-0.16%  CAGR=0.66%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-29 13:58:48,predict,AAPL,OK,"AAPL -> last_close=271.05 pred_close=269.16 d_pct=-0.70
+ret_lstm=-0.00697 sigma=0.01841 CI90%=[260.98,277.35]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,NVDA,OK,"NVDA -> last_close=210.94 pred_close=209.23 d_pct=-0.81
+ret_lstm=-0.00811 sigma=0.03148 CI90%=[198.34,220.12]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,AMD,OK,"AMD -> last_close=265.87 pred_close=264.30 d_pct=-0.59
+ret_lstm=-0.00590 sigma=0.03731 CI90%=[248.03,280.57]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,TSLA,OK,"TSLA -> last_close=463.08 pred_close=458.37 d_pct=-1.02
+ret_lstm=-0.01018 sigma=0.03741 CI90%=[429.95,486.78]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,AMZN,OK,"AMZN -> last_close=229.18 pred_close=227.22 d_pct=-0.85
+ret_lstm=-0.00851 sigma=0.02064 CI90%=[219.47,234.98]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,GOOGL,OK,"GOOGL -> last_close=268.89 pred_close=266.97 d_pct=-0.71
+ret_lstm=-0.00712 sigma=0.01811 CI90%=[258.99,274.96]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,MSFT,OK,"MSFT -> last_close=538.72 pred_close=534.33 d_pct=-0.82
+ret_lstm=-0.00816 sigma=0.01690 CI90%=[519.39,549.26]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 13:58:48,predict,KO,OK,"KO -> last_close=69.11 pred_close=68.41 d_pct=-1.01
+ret_lstm=-0.01013 sigma=0.01145 CI90%=[67.11,69.71]",15d44340a34cfb391a3d64691bf29095
+2025-10-29 14:07:02,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:07:02,collect,OK,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,evaluate_predictions,OK,"Updated: C:\Users\arthu\market-predictor\backend\data\model_errors.csv (16 rows)
+Saved calibration snapshot: C:\Users\arthu\market-predictor\backend\data\preds\preds__2025-10-29T14-07-06.csv (72 rows)"
+2025-10-29 14:07:02,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,AAPL,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,NVDA,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,AMD,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,TSLA,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,AMZN,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,GOOGL,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,MSFT,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,train_tab,KO,OK,Données insuffisantes.,054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.243601 2.882427 0.067226      84 167
+       0         -1 0.50  0.236821 2.813458 0.067226      83 167
+       0         -1 0.45  0.278950 2.739061 0.067454      99 167
+       0         -1 0.47  0.227536 2.571044 0.080780      92 167
+       0         -1 0.48  0.212773 2.439397 0.077373      89 167
+       0         -1 0.52  0.185100 2.418312 0.057581      71 167
+       0         -1 0.46  0.216897 2.322983 0.079857      97 167
+       0         -1 0.51  0.176389 2.273968 0.057392      75 167
+       0         -1 0.53  0.165573 2.227533 0.064007      68 167
+       1          1 0.49  1.276487 2.136829 0.106789     395 569
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.882427  0.243601 0.067226      84 167
+       0          1 0.45 1.259586  0.711457 0.129299     546 670
+       1         -1 0.73 0.987079  0.030105 0.013390      10 269
+       1          1 0.49 2.136829  1.276487 0.106789     395 569
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.243256  0.408187 0.099301     157 375"
+2025-10-29 14:07:02,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.39%  CAGR=1.21%
+NVDA  Sharpe=0.88  MaxDD=-3.95%  CAGR=38.34%
+AMD  Sharpe=0.83  MaxDD=-1.24%  CAGR=7.90%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.37%
+AMZN  Sharpe=0.22  MaxDD=-0.21%  CAGR=0.26%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.79  MaxDD=-0.16%  CAGR=0.66%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-29 14:07:02,predict,AAPL,OK,"AAPL -> last_close=271.04 pred_close=269.15 d_pct=-0.70
+ret_lstm=-0.00696 sigma=0.01841 CI90%=[260.97,277.34]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,NVDA,OK,"NVDA -> last_close=210.32 pred_close=208.58 d_pct=-0.83
+ret_lstm=-0.00829 sigma=0.03148 CI90%=[197.72,219.44]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,AMD,OK,"AMD -> last_close=264.93 pred_close=263.41 d_pct=-0.57
+ret_lstm=-0.00574 sigma=0.03731 CI90%=[247.20,279.62]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,TSLA,OK,"TSLA -> last_close=463.57 pred_close=458.84 d_pct=-1.02
+ret_lstm=-0.01020 sigma=0.03741 CI90%=[430.39,487.28]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,AMZN,OK,"AMZN -> last_close=228.40 pred_close=226.43 d_pct=-0.86
+ret_lstm=-0.00865 sigma=0.02064 CI90%=[218.70,234.16]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,GOOGL,OK,"GOOGL -> last_close=269.14 pred_close=267.22 d_pct=-0.71
+ret_lstm=-0.00712 sigma=0.01811 CI90%=[259.23,275.22]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,MSFT,OK,"MSFT -> last_close=538.21 pred_close=533.81 d_pct=-0.82
+ret_lstm=-0.00817 sigma=0.01690 CI90%=[518.89,548.73]",054e66065c33e7c26538262646600e75
+2025-10-29 14:07:02,predict,KO,OK,"KO -> last_close=69.25 pred_close=68.58 d_pct=-0.96
+ret_lstm=-0.00962 sigma=0.01145 CI90%=[67.28,69.88]",054e66065c33e7c26538262646600e75
+2025-10-29 14:33:37,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:33:37,collect,OK,2246094ca2ebfe6b8949bd7b6fbabb58
+2025-10-29 14:33:37,evaluate_predictions,OK,
+2025-10-29 14:33:37,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json",2246094ca2ebfe6b8949bd7b6fbabb58
+2025-10-29 14:33:37,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json",2246094ca2ebfe6b8949bd7b6fbabb58
+2025-10-29 14:33:37,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json",2246094ca2ebfe6b8949bd7b6fbabb58
+2025-10-29 14:33:37,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json",2246094ca2ebfe6b8949bd7b6fbabb58
+2025-10-29 14:38:06,hparams,OK,"{""LOOKBACK_DAYS"": 720, ""HALF_LIFE_DAYS"": 30, ""START_DATE"": ""2018-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:38:06,collect,OK,"Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_daily_live.csv
+"
+2025-10-29 14:38:06,evaluate_predictions,OK,
+2025-10-29 14:38:06,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json
+"
+2025-10-29 14:38:06,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json
+"
+2025-10-29 14:38:06,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json
+"
+2025-10-29 14:38:06,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json
+"
+2025-10-29 14:38:06,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json
+"
+2025-10-29 14:38:06,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json
+"
+2025-10-29 14:38:06,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json
+"
+2025-10-29 14:38:06,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json
+"
+2025-10-29 14:38:06,train_tab,AAPL,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,NVDA,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,AMD,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,TSLA,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,AMZN,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,GOOGL,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,MSFT,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,train_tab,KO,OK,"Données insuffisantes.
+"
+2025-10-29 14:38:06,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.50  0.208726 2.581548 0.065008      80 164
+       0         -1 0.51  0.181591 2.362937 0.055151      73 164
+       0         -1 0.52  0.178672 2.337134 0.055151      71 164
+       0         -1 0.53  0.171198 2.325032 0.061781      66 164
+       0         -1 0.45  0.228384 2.311876 0.066264      96 164
+       1          1 0.49  1.320476 2.176403 0.106789     397 574
+       1          1 0.48  1.326574 2.169630 0.106789     407 574
+       1          1 0.47  1.236804 2.029928 0.123331     422 574
+       0         -1 0.49  0.168163 2.019353 0.075549      83 164
+       1          1 0.58  0.884832 2.005886 0.084600     258 574
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.50 2.581548  0.208726 0.065008      80 164
+       0          1 0.45 1.292585  0.739036 0.122606     547 672
+       1         -1 0.73 0.998303  0.030106 0.013390      10 263
+       1          1 0.49 2.176403  1.320476 0.106789     397 574
+       2         -1 0.45 0.135659 -0.000776 0.231102     235 461
+       2          1 0.62 1.360472  0.459484 0.099301     159 376
+"
+2025-10-29 14:38:06,evaluate_backtest,OK,"AAPL  Sharpe=0.74  MaxDD=-0.36%  CAGR=1.32%
+NVDA  Sharpe=0.89  MaxDD=-4.03%  CAGR=39.56%
+AMD  Sharpe=0.93  MaxDD=-1.24%  CAGR=8.66%
+TSLA  Sharpe=0.46  MaxDD=-0.80%  CAGR=1.45%
+AMZN  Sharpe=0.18  MaxDD=-0.25%  CAGR=0.21%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.87  MaxDD=-0.15%  CAGR=0.79%
+KO  Sharpe=0.38  MaxDD=-0.32%  CAGR=0.72%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv
+"
+2025-10-29 14:38:06,predict,AAPL,FAIL,"
+2025-10-29 15:39:39.978212: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:39:42.701740: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,NVDA,FAIL,"
+2025-10-29 15:39:45.069259: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:39:47.763248: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,AMD,FAIL,"
+2025-10-29 15:39:50.106824: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:39:52.774578: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,TSLA,FAIL,"
+2025-10-29 15:39:55.076972: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:39:58.005642: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,AMZN,FAIL,"
+2025-10-29 15:40:00.439129: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:40:03.094604: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,GOOGL,FAIL,"
+2025-10-29 15:40:05.284740: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:40:07.989156: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,MSFT,FAIL,"
+2025-10-29 15:40:10.270426: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:40:12.749160: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:38:06,predict,KO,FAIL,"
+2025-10-29 15:40:14.957965: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 15:40:18.162600: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)
+C:\Users\arthu\AppData\Local\Packages\PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0\LocalCache\local-packages\Python311\site-packages\sklearn\utils\validation.py:2742: UserWarning: X has feature names, but StandardScaler was fitted without feature names
+  warnings.warn(
+Traceback (most recent call last):
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 138, in <module>
+    _sys.exit(main())
+              ^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 113, in main
+    X_last = _to_seq_last(Xs, T)
+             ^^^^^^^^^^^^^^^^^^^
+  File ""C:\Users\arthu\market-predictor\backend\scripts\predict_next_close.py"", line 45, in _to_seq_last
+    raise ValueError(f""Pas assez d'observations pour T={T} (n={len(X2)})"")
+ValueError: Pas assez d'observations pour T=30 (n=7)
+"
+2025-10-29 14:44:22,hparams,OK,"{""LOOKBACK_DAYS"": 720, ""HALF_LIFE_DAYS"": 30, ""START_DATE"": ""2018-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:44:22,collect,OK,"Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_daily_live.csv
+"
+2025-10-29 14:44:22,evaluate_predictions,OK,
+2025-10-29 14:44:22,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json
+"
+2025-10-29 14:44:22,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json
+"
+2025-10-29 14:44:22,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json
+"
+2025-10-29 14:44:22,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json
+"
+2025-10-29 14:44:22,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json
+"
+2025-10-29 14:44:22,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json
+"
+2025-10-29 14:44:22,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json
+"
+2025-10-29 14:44:22,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json
+"
+2025-10-29 14:44:22,train_tab,AAPL,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,NVDA,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,AMD,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,TSLA,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,AMZN,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,GOOGL,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,MSFT,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,train_tab,KO,OK,"Données insuffisantes.
+"
+2025-10-29 14:44:22,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.50  0.208727 2.581558 0.065007      80 164
+       0         -1 0.51  0.181591 2.362939 0.055151      73 164
+       0         -1 0.52  0.178672 2.337136 0.055151      71 164
+       0         -1 0.53  0.171197 2.325029 0.061781      66 164
+       0         -1 0.45  0.228383 2.311869 0.066264      96 164
+       1          1 0.49  1.320480 2.176406 0.106789     397 574
+       1          1 0.48  1.326578 2.169633 0.106789     407 574
+       1          1 0.47  1.236810 2.029934 0.123331     422 574
+       0         -1 0.49  0.168163 2.019358 0.075549      83 164
+       1          1 0.58  0.884835 2.005892 0.084601     258 574
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.50 2.581558  0.208727 0.065007      80 164
+       0          1 0.45 1.292581  0.739032 0.122606     547 672
+       1         -1 0.73 0.998276  0.030105 0.013390      10 263
+       1          1 0.49 2.176406  1.320480 0.106789     397 574
+       2         -1 0.45 0.135657 -0.000778 0.231102     235 461
+       2          1 0.62 1.360463  0.459479 0.099301     159 376
+"
+2025-10-29 14:44:22,evaluate_backtest,OK,"AAPL  Sharpe=0.74  MaxDD=-0.36%  CAGR=1.32%
+NVDA  Sharpe=0.89  MaxDD=-4.03%  CAGR=39.56%
+AMD  Sharpe=0.93  MaxDD=-1.24%  CAGR=8.66%
+TSLA  Sharpe=0.46  MaxDD=-0.80%  CAGR=1.45%
+AMZN  Sharpe=0.18  MaxDD=-0.25%  CAGR=0.21%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.87  MaxDD=-0.15%  CAGR=0.79%
+KO  Sharpe=0.38  MaxDD=-0.32%  CAGR=0.72%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv
+"
+2025-10-29 14:44:22,predict,AAPL,OK,"AAPL -> last_close=269.59 pred_close=269.81 d_pct=0.08
+ret_lstm=0.00080 sigma=0.01841 CI90%=[261.67,277.94]
+"
+2025-10-29 14:44:22,predict,NVDA,OK,"NVDA -> last_close=210.05 pred_close=211.01 d_pct=0.46
+ret_lstm=0.00459 sigma=0.03149 CI90%=[200.16,221.86]
+"
+2025-10-29 14:44:22,predict,AMD,OK,"AMD -> last_close=263.15 pred_close=263.55 d_pct=0.15
+ret_lstm=0.00154 sigma=0.03732 CI90%=[247.45,279.66]
+"
+2025-10-29 14:44:22,predict,TSLA,OK,"TSLA -> last_close=459.28 pred_close=459.95 d_pct=0.14
+ret_lstm=0.00145 sigma=0.03743 CI90%=[431.75,488.14]
+"
+2025-10-29 14:44:22,predict,AMZN,OK,"AMZN -> last_close=229.22 pred_close=229.62 d_pct=0.18
+ret_lstm=0.00175 sigma=0.02064 CI90%=[221.86,237.38]
+"
+2025-10-29 14:44:22,predict,GOOGL,OK,"GOOGL -> last_close=269.14 pred_close=269.33 d_pct=0.07
+ret_lstm=0.00070 sigma=0.01811 CI90%=[261.33,277.32]
+"
+2025-10-29 14:44:22,predict,MSFT,OK,"MSFT -> last_close=538.00 pred_close=539.97 d_pct=0.37
+ret_lstm=0.00366 sigma=0.01689 CI90%=[525.06,554.87]
+"
+2025-10-29 14:44:22,predict,KO,OK,"KO -> last_close=68.79 pred_close=69.00 d_pct=0.31
+ret_lstm=0.00306 sigma=0.01141 CI90%=[67.71,70.29]
+"
+2025-10-29 14:51:35,hparams,OK,"{""LOOKBACK_DAYS"": 720, ""HALF_LIFE_DAYS"": 30, ""START_DATE"": ""2018-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:51:35,collect,OK,"Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_daily_live.csv
+"
+2025-10-29 14:51:35,evaluate_predictions,OK,
+2025-10-29 14:51:35,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json
+"
+2025-10-29 14:51:35,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json
+"
+2025-10-29 14:51:35,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json
+"
+2025-10-29 14:51:35,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json
+"
+2025-10-29 14:51:35,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json
+"
+2025-10-29 14:51:35,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json
+"
+2025-10-29 14:51:35,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json
+"
+2025-10-29 14:51:35,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json
+"
+2025-10-29 14:51:35,train_tab,AAPL,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,NVDA,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,AMD,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,TSLA,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,AMZN,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,GOOGL,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,MSFT,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,train_tab,KO,OK,"Données insuffisantes.
+"
+2025-10-29 14:51:35,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.50  0.208727 2.581550 0.065008      80 164
+       0         -1 0.51  0.181591 2.362933 0.055151      73 164
+       0         -1 0.52  0.178672 2.337130 0.055151      71 164
+       0         -1 0.53  0.171197 2.325026 0.061781      66 164
+       0         -1 0.45  0.228383 2.311872 0.066264      96 164
+       1          1 0.49  1.320474 2.176401 0.106789     397 574
+       1          1 0.48  1.326568 2.169623 0.106789     407 574
+       1          1 0.47  1.236800 2.029925 0.123331     422 574
+       0         -1 0.49  0.168163 2.019352 0.075549      83 164
+       1          1 0.58  0.884829 2.005882 0.084600     258 574
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.50 2.581550  0.208727 0.065008      80 164
+       0          1 0.45 1.292580  0.739032 0.122606     547 672
+       1         -1 0.73 0.998267  0.030105 0.013390      10 263
+       1          1 0.49 2.176401  1.320474 0.106789     397 574
+       2         -1 0.45 0.135660 -0.000776 0.231102     235 461
+       2          1 0.62 1.360474  0.459483 0.099301     159 376
+"
+2025-10-29 14:51:35,evaluate_backtest,OK,"AAPL  Sharpe=0.74  MaxDD=-0.36%  CAGR=1.32%
+NVDA  Sharpe=0.89  MaxDD=-4.03%  CAGR=39.57%
+AMD  Sharpe=0.93  MaxDD=-1.24%  CAGR=8.66%
+TSLA  Sharpe=0.46  MaxDD=-0.80%  CAGR=1.45%
+AMZN  Sharpe=0.18  MaxDD=-0.25%  CAGR=0.21%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.87  MaxDD=-0.15%  CAGR=0.79%
+KO  Sharpe=0.38  MaxDD=-0.32%  CAGR=0.72%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv
+"
+2025-10-29 14:51:35,predict,AAPL,OK,"AAPL -> last_close=269.43 pred_close=269.67 d_pct=0.09
+ret_lstm=0.00088 sigma=0.01841 CI90%=[261.54,277.81]
+"
+2025-10-29 14:51:35,predict,NVDA,OK,"NVDA -> last_close=208.61 pred_close=209.57 d_pct=0.46
+ret_lstm=0.00459 sigma=0.03149 CI90%=[198.79,220.34]
+"
+2025-10-29 14:51:35,predict,AMD,OK,"AMD -> last_close=262.53 pred_close=262.93 d_pct=0.15
+ret_lstm=0.00154 sigma=0.03732 CI90%=[246.86,279.00]
+"
+2025-10-29 14:51:35,predict,TSLA,OK,"TSLA -> last_close=459.92 pred_close=460.59 d_pct=0.14
+ret_lstm=0.00145 sigma=0.03743 CI90%=[432.36,488.82]
+"
+2025-10-29 14:51:35,predict,AMZN,OK,"AMZN -> last_close=229.60 pred_close=230.01 d_pct=0.18
+ret_lstm=0.00175 sigma=0.02064 CI90%=[222.24,237.78]
+"
+2025-10-29 14:51:35,predict,GOOGL,OK,"GOOGL -> last_close=269.95 pred_close=270.12 d_pct=0.06
+ret_lstm=0.00061 sigma=0.01811 CI90%=[262.10,278.14]
+"
+2025-10-29 14:51:35,predict,MSFT,OK,"MSFT -> last_close=537.84 pred_close=539.79 d_pct=0.36
+ret_lstm=0.00362 sigma=0.01689 CI90%=[524.89,554.69]
+"
+2025-10-29 14:51:35,predict,KO,OK,"KO -> last_close=68.78 pred_close=68.97 d_pct=0.29
+ret_lstm=0.00288 sigma=0.01141 CI90%=[67.69,70.26]
+"
+2025-10-29 14:59:03,hparams,OK,"{""LOOKBACK_DAYS"": 720, ""HALF_LIFE_DAYS"": 30, ""START_DATE"": ""2018-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 14:59:03,collect,OK,"Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AAPL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\NVDA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMD_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\TSLA_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\AMZN_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\GOOGL_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\MSFT_daily_live.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_historical_prices.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_intraday_1m.csv
+Saved: C:\Users\arthu\market-predictor\backend\data\KO_daily_live.csv
+"
+2025-10-29 14:59:03,evaluate_predictions,OK,
+2025-10-29 14:59:03,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json
+"
+2025-10-29 14:59:03,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json
+"
+2025-10-29 14:59:03,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json
+"
+2025-10-29 14:59:03,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json
+"
+2025-10-29 14:59:03,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json
+"
+2025-10-29 14:59:03,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json
+"
+2025-10-29 14:59:03,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json
+"
+2025-10-29 14:59:03,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json
+"
+2025-10-29 14:59:03,train_tab,AAPL,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,NVDA,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,AMD,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,TSLA,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,AMZN,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,GOOGL,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,MSFT,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,train_tab,KO,OK,"Données insuffisantes.
+"
+2025-10-29 14:59:03,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.50  0.208727 2.581552 0.065008      80 164
+       0         -1 0.51  0.181591 2.362933 0.055151      73 164
+       0         -1 0.52  0.178672 2.337126 0.055151      71 164
+       0         -1 0.53  0.171197 2.325017 0.061781      66 164
+       0         -1 0.45  0.228382 2.311861 0.066264      96 164
+       1          1 0.49  1.320479 2.176405 0.106789     397 574
+       1          1 0.48  1.326578 2.169633 0.106789     407 574
+       1          1 0.47  1.236808 2.029932 0.123331     422 574
+       0         -1 0.49  0.168162 2.019347 0.075549      83 164
+       1          1 0.58  0.884835 2.005891 0.084600     258 574
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.50 2.581552  0.208727 0.065008      80 164
+       0          1 0.45 1.292577  0.739030 0.122606     547 672
+       1         -1 0.73 0.998272  0.030105 0.013390      10 263
+       1          1 0.49 2.176405  1.320479 0.106789     397 574
+       2         -1 0.45 0.135662 -0.000775 0.231102     235 461
+       2          1 0.62 1.360465  0.459479 0.099301     159 376
+"
+2025-10-29 14:59:03,evaluate_backtest,OK,"AAPL  Sharpe=0.74  MaxDD=-0.36%  CAGR=1.32%
+NVDA  Sharpe=0.89  MaxDD=-4.03%  CAGR=39.56%
+AMD  Sharpe=0.93  MaxDD=-1.24%  CAGR=8.66%
+TSLA  Sharpe=0.46  MaxDD=-0.80%  CAGR=1.45%
+AMZN  Sharpe=0.18  MaxDD=-0.25%  CAGR=0.21%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.87  MaxDD=-0.15%  CAGR=0.79%
+KO  Sharpe=0.38  MaxDD=-0.32%  CAGR=0.72%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv
+"
+2025-10-29 14:59:03,predict,AAPL,OK,"AAPL -> last_close=268.73 pred_close=268.97 d_pct=0.09
+ret_lstm=0.00089 sigma=0.01841 CI90%=[260.86,277.08]
+"
+2025-10-29 14:59:03,predict,NVDA,OK,"NVDA -> last_close=208.73 pred_close=209.69 d_pct=0.46
+ret_lstm=0.00459 sigma=0.03149 CI90%=[198.91,220.47]
+"
+2025-10-29 14:59:03,predict,AMD,OK,"AMD -> last_close=262.35 pred_close=262.75 d_pct=0.15
+ret_lstm=0.00154 sigma=0.03732 CI90%=[246.70,278.81]
+"
+2025-10-29 14:59:03,predict,TSLA,OK,"TSLA -> last_close=458.31 pred_close=458.97 d_pct=0.14
+ret_lstm=0.00145 sigma=0.03743 CI90%=[430.84,487.11]
+"
+2025-10-29 14:59:03,predict,AMZN,OK,"AMZN -> last_close=230.31 pred_close=230.71 d_pct=0.18
+ret_lstm=0.00175 sigma=0.02064 CI90%=[222.92,238.51]
+"
+2025-10-29 14:59:03,predict,GOOGL,OK,"GOOGL -> last_close=270.78 pred_close=270.97 d_pct=0.07
+ret_lstm=0.00070 sigma=0.01811 CI90%=[262.93,279.01]
+"
+2025-10-29 14:59:03,predict,MSFT,OK,"MSFT -> last_close=538.05 pred_close=540.00 d_pct=0.36
+ret_lstm=0.00362 sigma=0.01689 CI90%=[525.09,554.91]
+"
+2025-10-29 14:59:03,predict,KO,OK,"KO -> last_close=68.75 pred_close=68.95 d_pct=0.31
+ret_lstm=0.00305 sigma=0.01141 CI90%=[67.67,70.24]
+"

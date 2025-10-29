@@ -27,3 +27,14 @@
 /* Page fade */
 .page-enter { opacity: 0; transform: translateY(4px); }
 .page-enter-active { opacity: 1; transform: translateY(0); transition: all .35s smooth; }
+
+.app-shell {
+  position: relative;
+  background: transparent; /* ne masque pas le DarkVeil */
+  z-index: 0;
+}
+
+.app-shell__main {
+  position: relative;
+  z-index: 1;
+}

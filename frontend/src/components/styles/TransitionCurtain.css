@@ -1,0 +1,30 @@
+/* TransitionCurtain.css
+   Rideau "liquid glass" fluide, sous la navbar et uniquement pendant la transition.
+*/
+
+.lc-curtain {
+  position: fixed;
+  left: 0;
+  top: 64px;                         /* Ajuste selon la hauteur de ta navbar */
+  width: 100%;
+  height: calc(100vh - 64px);
+  z-index: 5;                        /* Navbar = 10, contenu = 0 */
+  pointer-events: none;
+  background: rgba(17, 23, 41, 0.55);
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(18px) saturate(160%);
+  -webkit-backdrop-filter: blur(18px) saturate(160%);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.45) inset;
+  overflow: hidden;
+}
+
+.lc-sheen {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(1200px 400px at 110% 20%, rgba(255, 255, 255, 0.08), transparent 60%),
+    radial-gradient(900px 300px at -10% 80%, rgba(255, 255, 255, 0.05), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.9;
+}

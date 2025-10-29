@@ -1,9 +1,8 @@
 # FILENAME: scripts/data_preprocessing.py
 # -*- coding: utf-8 -*-
 """
-Features structure/contexte/comportement + exogènes + ATR.
-API:
-  make_features(df, time_step=30, market_df=None, earnings_dates=None, exog=None)
+Features + exogènes + ATR. Intègre les features d'erreurs J-1 si errors_df fourni.
+make_features(df, time_step=30, market_df=None, earnings_dates=None, exog=None, errors_df=None)
 """
 from __future__ import annotations
 from typing import Iterable, Optional, Tuple, List, Dict
@@ -26,16 +25,12 @@ def _qcut_safe(x: pd.Series, q=3, labels=None) -> pd.Series:
     except Exception:
         return pd.cut(x, q, labels=labels)
 
-# -------- Couche 1: Structure --------
 def _features_structure(df: pd.DataFrame) -> tuple[pd.DataFrame, List[str]]:
     d = _ensure_datetime(df.copy()).sort_values("Date").reset_index(drop=True)
     for c in ["Open","High","Low","Close","Adj Close","Volume"]:
         if c in d.columns: d[c] = pd.to_numeric(d[c], errors="coerce")
     d = d.replace([np.inf,-np.inf], np.nan).dropna(subset=["Close"])
-
-    close = d["Close"]
-    high = d.get("High", close)
-    low = d.get("Low", close)
+    close = d["Close"]; high = d.get("High", close); low = d.get("Low", close)
     vol = d.get("Volume", pd.Series(index=d.index, dtype=float)).fillna(0.0)
 
     d["ret_1"] = close.pct_change().fillna(0.0)
@@ -66,12 +61,9 @@ def _features_structure(df: pd.DataFrame) -> tuple[pd.DataFrame, List[str]]:
     spread = d["ema_12"] - d["ema_26"]
     d["trend_slope"] = spread.diff(10).fillna(0.0)
 
-    # True Range + ATR_14 pour sizing et SL/TP
     prev_close = close.shift(1)
-    tr1 = (high - low).abs()
-    tr2 = (high - prev_close).abs()
-    tr3 = (low - prev_close).abs()
-    d["true_range"] = pd.concat([tr1, tr2, tr3], axis=1).max(axis=1).fillna(0.0)
+    tr = pd.concat([(high - low).abs(), (high - prev_close).abs(), (low - prev_close).abs()], axis=1).max(axis=1)
+    d["true_range"] = tr.fillna(0.0)
     d["ATR_14"] = d["true_range"].rolling(14, min_periods=1).mean().fillna(method="bfill").fillna(0.0)
 
     for c in ["High","Low","Volume"]:
@@ -86,7 +78,6 @@ def _features_structure(df: pd.DataFrame) -> tuple[pd.DataFrame, List[str]]:
     ]
     return d, cols
 
-# -------- Couche 2: Contexte --------
 def _features_context(df: pd.DataFrame,
                       market_df: Optional[pd.DataFrame] = None,
                       earnings_dates: Optional[Iterable[pd.Timestamp]] = None
@@ -97,7 +88,7 @@ def _features_context(df: pd.DataFrame,
         d["month"] = d["Date"].dt.month.astype("Int8")
         d["month_end_flag"] = d["Date"].dt.is_month_end.astype("Int8")
     else:
-        d["dow"], d["month"], d["month_end_flag"] = 0, 0, 0
+        d["dow"] = d["month"] = d["month_end_flag"] = 0
 
     d["trend_regime"] = np.sign(d["ema_12"] - d["ema_26"]).astype("Int8")
     vol_roll = d["ret_1"].rolling(20, min_periods=1).std().fillna(0.0)
@@ -122,26 +113,21 @@ def _features_context(df: pd.DataFrame,
     cols = ["dow","month","month_end_flag","trend_regime","vol_regime","market_vol","earnings_flag"]
     return d, cols
 
-# -------- Couche 3: Comportement --------
 def _features_behavior(df: pd.DataFrame) -> tuple[pd.DataFrame, List[str]]:
     d = df.copy()
     open_ = d.get("Open", d["Close"])
     prev_close = d["Close"].shift(1)
-
     d["overnight_gap"] = ((open_ - prev_close) / prev_close.replace(0, np.nan)).fillna(0.0)
     d["intraday_return"] = ((d["Close"] - open_) / open_.replace(0, np.nan)).fillna(0.0)
     d["gap_fill"] = (((d["Low"] <= prev_close) & (d["High"] >= prev_close)).astype("Int8")
                      if {"Low","High"}.issubset(d.columns) else 0)
     d["volatility_rolling"] = d["ret_1"].rolling(20, min_periods=1).std().fillna(0.0)
-
     vol = d.get("Volume", pd.Series(index=d.index, dtype=float)).fillna(0.0)
     vol_ma20 = vol.rolling(20, min_periods=1).mean().replace(0.0, np.nan)
     d["volume_surge"] = (vol / vol_ma20).replace([np.inf,-np.inf], np.nan).fillna(0.0)
-
     cols = ["overnight_gap","intraday_return","gap_fill","volatility_rolling","volume_surge"]
     return d, cols
 
-# -------- Exogènes --------
 def _features_exog(df: pd.DataFrame, exog: Optional[Dict[str, pd.DataFrame]]) -> tuple[pd.DataFrame, List[str]]:
     if not exog: return df, []
     d = df.copy(); feats=[]
@@ -157,19 +143,42 @@ def _features_exog(df: pd.DataFrame, exog: Optional[Dict[str, pd.DataFrame]]) ->
         feats.append("rates_shock")
     return d, feats
 
-# -------- API --------
+def _features_errors(df: pd.DataFrame, errors_df: pd.DataFrame | None) -> tuple[pd.DataFrame, List[str]]:
+    if errors_df is None or errors_df.empty:
+        return df, []
+    e = errors_df.copy()
+    # attend colonnes: Date, pred_ret, actual_ret, err_1, abs_err_1, err_ma5, err_ma20, bias20, hit20
+    keep = [c for c in ["Date","pred_ret","actual_ret","err_1","abs_err_1","err_ma5","err_ma20","bias20","hit20"] if c in e.columns]
+    e = e[keep].copy()
+    # décalage d'un jour pour éviter fuite d'info
+    for c in keep:
+        if c != "Date":
+            e[c] = e[c].shift(1)
+    # merge-asof par Date
+    d = pd.merge_asof(df.sort_values("Date"), e.sort_values("Date"), on="Date", direction="backward")
+    d = d.rename(columns={
+        "err_1":"prev_err_1","abs_err_1":"prev_abs_err_1",
+        "err_ma5":"err_ma5_lag1","err_ma20":"err_ma20_lag1",
+        "bias20":"bias20_lag1","hit20":"hit20_lag1"
+    })
+    feats = ["prev_err_1","prev_abs_err_1","err_ma5_lag1","err_ma20_lag1","bias20_lag1","hit20_lag1"]
+    feats = [c for c in feats if c in d.columns]
+    return d, feats
+
 def make_features(df: pd.DataFrame,
                   time_step: int = 30,
                   market_df: Optional[pd.DataFrame] = None,
                   earnings_dates: Optional[Iterable[pd.Timestamp]] = None,
-                  exog: Optional[Dict[str, pd.DataFrame]] = None
+                  exog: Optional[Dict[str, pd.DataFrame]] = None,
+                  errors_df: Optional[pd.DataFrame] = None
 ) -> tuple[pd.DataFrame, List[str]]:
     base, cols_base = _features_structure(df)
-    ctx, cols_ctx = _features_context(base, market_df, earnings_dates)
-    beh, cols_beh = _features_behavior(ctx)
-    exo, cols_exo = _features_exog(beh, exog)
-    if "Date" in exo.columns: exo = exo.sort_values("Date").reset_index(drop=True)
-    return exo, cols_base + cols_ctx + cols_beh + cols_exo
+    ctx, cols_ctx   = _features_context(base, market_df, earnings_dates)
+    beh, cols_beh   = _features_behavior(ctx)
+    exo, cols_exo   = _features_exog(beh, exog)
+    err, cols_err   = _features_errors(exo, errors_df)
+    if "Date" in err.columns: err = err.sort_values("Date").reset_index(drop=True)
+    return err, cols_base + cols_ctx + cols_beh + cols_exo + cols_err
 
 def make_features_from_df(df: pd.DataFrame, time_step: int = 30) -> tuple[pd.DataFrame, List[str]]:
     return make_features(df, time_step=time_step)

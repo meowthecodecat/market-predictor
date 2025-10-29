@@ -68,3 +68,17 @@ body::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
 }
+
+.preload-placeholder {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: rgba(17,23,41,0.65);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+}
+
+.motion-blur-transition {
+  transition: filter .3s ease, opacity .3s ease;
+  filter: saturate(130%) brightness(105%);
+}

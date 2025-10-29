@@ -431,3 +431,328 @@ ret_lstm=-0.02752  sigma=0.05063  CI90%=[239.50,284.22]",7b53b4e73d8b96834c26e2c
 ret_lstm=-0.00010  sigma=0.05457  CI90%=[483.90,579.03]",7b53b4e73d8b96834c26e2c3ce49580b
 2025-10-28 12:27:24,predict,KO,OK,"KO -> last_close=70.06 pred_close=68.46 d_pct=-2.28
 ret_lstm=-0.02281  sigma=0.06816  CI90%=[60.63,76.29]",7b53b4e73d8b96834c26e2c3ce49580b
+2025-10-29 08:17:01,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 08:17:01,collect,OK,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,evaluate_predictions,OK,Updated: C:\Users\arthu\market-predictor\backend\data\model_errors.csv (24 rows)
+2025-10-29 08:17:01,train_lstm,AAPL,FAIL(1),"AAPL: données insuffisantes après nettoyage.
+
+2025-10-29 09:17:22.824395: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:17:44.917045: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,NVDA,FAIL(1),"NVDA: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:02.976776: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:05.943869: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,AMD,FAIL(1),"AMD: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:08.330899: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:11.319413: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,TSLA,FAIL(1),"TSLA: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:13.662991: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:16.657630: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,AMZN,FAIL(1),"AMZN: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:19.197772: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:22.014250: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,GOOGL,FAIL(1),"GOOGL: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:24.263511: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:26.977426: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,MSFT,FAIL(1),"MSFT: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:29.831019: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:33.206401: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_lstm,KO,FAIL(1),"KO: données insuffisantes après nettoyage.
+
+2025-10-29 09:18:35.968692: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:18:38.857063: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,AAPL,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,NVDA,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,AMD,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,TSLA,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,AMZN,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,GOOGL,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,MSFT,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,train_tab,KO,OK,Données insuffisantes.,3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.243601 2.882427 0.067226      84 167
+       0         -1 0.50  0.236821 2.813458 0.067226      83 167
+       0         -1 0.45  0.278950 2.739061 0.067454      99 167
+       0         -1 0.47  0.227536 2.571044 0.080780      92 167
+       0         -1 0.48  0.212773 2.439397 0.077373      89 167
+       0         -1 0.52  0.185100 2.418312 0.057581      71 167
+       0         -1 0.46  0.216897 2.322983 0.079857      97 167
+       0         -1 0.51  0.176389 2.273968 0.057392      75 167
+       0         -1 0.53  0.165573 2.227533 0.064007      68 167
+       1          1 0.49  1.246442 2.103522 0.106789     395 569
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.882427  0.243601 0.067226      84 167
+       0          1 0.45 1.259586  0.711457 0.129299     546 670
+       1         -1 0.73 0.987079  0.030105 0.013390      10 269
+       1          1 0.49 2.103522  1.246442 0.106789     395 569
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-29 08:17:01,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.39%  CAGR=1.21%
+NVDA  Sharpe=0.88  MaxDD=-3.95%  CAGR=38.33%
+AMD  Sharpe=0.83  MaxDD=-1.24%  CAGR=7.89%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.37%
+AMZN  Sharpe=0.22  MaxDD=-0.21%  CAGR=0.26%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.80  MaxDD=-0.16%  CAGR=0.66%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-29 08:17:01,predict,AAPL,FAIL,"2025-10-29 09:18:57.978040: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:00.975267: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,NVDA,FAIL,"2025-10-29 09:19:03.573033: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:06.628844: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,AMD,FAIL,"2025-10-29 09:19:08.881710: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:12.171305: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,TSLA,FAIL,"2025-10-29 09:19:14.861752: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:17.967459: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,AMZN,FAIL,"2025-10-29 09:19:20.476972: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:23.127513: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,GOOGL,FAIL,"2025-10-29 09:19:25.181223: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:27.626619: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,MSFT,FAIL,"2025-10-29 09:19:29.648620: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:32.102240: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:17:01,predict,KO,FAIL,"2025-10-29 09:19:34.233657: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:19:36.672306: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+usage: predict_next_close.py [-h] --symbol SYMBOL [--time-step TIME_STEP]
+predict_next_close.py: error: unrecognized arguments: --alpha 0.6",3e538a68579d2d3bd072365fc8ecd88b
+2025-10-29 08:30:11,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 08:30:11,collect,OK,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,evaluate_predictions,OK,Updated: C:\Users\arthu\market-predictor\backend\data\model_errors.csv (8 rows)
+2025-10-29 08:30:11,train_lstm,AAPL,FAIL(1),"AAPL: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:17.191845: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:19.564650: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,NVDA,FAIL(1),"NVDA: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:21.776943: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:24.282594: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,AMD,FAIL(1),"AMD: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:26.740324: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:29.295106: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,TSLA,FAIL(1),"TSLA: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:31.515895: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:33.924456: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,AMZN,FAIL(1),"AMZN: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:36.148497: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:38.585661: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,GOOGL,FAIL(1),"GOOGL: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:40.787230: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:43.189632: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,MSFT,FAIL(1),"MSFT: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:45.281691: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:47.705299: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_lstm,KO,FAIL(1),"KO: données insuffisantes après nettoyage.
+
+2025-10-29 09:30:49.770943: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:30:52.231945: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+C:\Users\arthu\market-predictor\backend\scripts\data_preprocessing.py:67: FutureWarning: Series.fillna with 'method' is deprecated and will raise in a future version. Use obj.ffill() or obj.bfill() instead.
+  d[""ATR_14""] = d[""true_range""].rolling(14, min_periods=1).mean().fillna(method=""bfill"").fillna(0.0)",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,AAPL,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,NVDA,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,AMD,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,TSLA,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,AMZN,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,GOOGL,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,MSFT,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,train_tab,KO,OK,Données insuffisantes.,0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.243601 2.882427 0.067226      84 167
+       0         -1 0.50  0.236821 2.813458 0.067226      83 167
+       0         -1 0.45  0.278950 2.739061 0.067454      99 167
+       0         -1 0.47  0.227536 2.571044 0.080780      92 167
+       0         -1 0.48  0.212773 2.439397 0.077373      89 167
+       0         -1 0.52  0.185100 2.418312 0.057581      71 167
+       0         -1 0.46  0.216897 2.322983 0.079857      97 167
+       0         -1 0.51  0.176389 2.273968 0.057392      75 167
+       0         -1 0.53  0.165573 2.227533 0.064007      68 167
+       1          1 0.49  1.246442 2.103522 0.106789     395 569
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.882427  0.243601 0.067226      84 167
+       0          1 0.45 1.259586  0.711457 0.129299     546 670
+       1         -1 0.73 0.987079  0.030105 0.013390      10 269
+       1          1 0.49 2.103522  1.246442 0.106789     395 569
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-29 08:30:11,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.39%  CAGR=1.21%
+NVDA  Sharpe=0.88  MaxDD=-3.95%  CAGR=38.33%
+AMD  Sharpe=0.83  MaxDD=-1.24%  CAGR=7.89%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.37%
+AMZN  Sharpe=0.22  MaxDD=-0.21%  CAGR=0.26%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.80  MaxDD=-0.16%  CAGR=0.66%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-29 08:30:11,predict,AAPL,FAIL,"AAPL -> modèles/scaler/features manquants
+
+2025-10-29 09:31:11.227854: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:14.278535: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,NVDA,FAIL,"NVDA -> modèles/scaler/features manquants
+
+2025-10-29 09:31:17.233153: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:22.513004: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,AMD,FAIL,"AMD -> modèles/scaler/features manquants
+
+2025-10-29 09:31:26.746641: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:29.721729: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,TSLA,FAIL,"TSLA -> modèles/scaler/features manquants
+
+2025-10-29 09:31:31.924296: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:34.489925: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,AMZN,FAIL,"AMZN -> modèles/scaler/features manquants
+
+2025-10-29 09:31:36.670615: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:39.232175: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,GOOGL,FAIL,"GOOGL -> modèles/scaler/features manquants
+
+2025-10-29 09:31:41.412507: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:43.817290: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,MSFT,FAIL,"MSFT -> modèles/scaler/features manquants
+
+2025-10-29 09:31:45.897448: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:48.294543: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:30:11,predict,KO,FAIL,"KO -> modèles/scaler/features manquants
+
+2025-10-29 09:31:50.377723: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.
+2025-10-29 09:31:52.771839: I tensorflow/core/util/port.cc:153] oneDNN custom operations are on. You may see slightly different numerical results due to floating-point round-off errors from different computation orders. To turn them off, set the environment variable `TF_ENABLE_ONEDNN_OPTS=0`.",0d2339647f8675433f034871e0066792
+2025-10-29 08:53:44,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 08:53:44,collect,OK,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,evaluate_predictions,OK,Updated: C:\Users\arthu\market-predictor\backend\data\model_errors.csv (8 rows)
+2025-10-29 08:53:44,train_lstm,AAPL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AAPL_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,NVDA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_NVDA_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,AMD,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMD_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,TSLA,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_TSLA_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,AMZN,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_AMZN_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,GOOGL,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_GOOGL_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,MSFT,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_MSFT_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_lstm,KO,OK,"Saved model: C:\Users\arthu\market-predictor\backend\models\nextclose_KO.keras
+Saved scaler: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_scaler.pkl
+Saved features: C:\Users\arthu\market-predictor\backend\models\nextclose_KO_features.json",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,AAPL,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,NVDA,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,AMD,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,TSLA,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,AMZN,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,GOOGL,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,MSFT,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,train_tab,KO,OK,Données insuffisantes.,c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,threshold_sweep,OK,"TOP 10 global:
+ vol_reg  trend_reg  thr  cum_perf   sharpe   max_dd  trades   n
+       0         -1 0.49  0.243601 2.882427 0.067226      84 167
+       0         -1 0.50  0.236821 2.813458 0.067226      83 167
+       0         -1 0.45  0.278950 2.739061 0.067454      99 167
+       0         -1 0.47  0.227536 2.571044 0.080780      92 167
+       0         -1 0.48  0.212773 2.439397 0.077373      89 167
+       0         -1 0.52  0.185100 2.418312 0.057581      71 167
+       0         -1 0.46  0.216897 2.322983 0.079857      97 167
+       0         -1 0.51  0.176389 2.273968 0.057392      75 167
+       0         -1 0.53  0.165573 2.227533 0.064007      68 167
+       1          1 0.49  1.246442 2.103522 0.106789     395 569
+
+Seuils recommandés par cellule (meilleur Sharpe):
+ vol_reg  trend_reg  thr   sharpe  cum_perf   max_dd  trades   n
+       0         -1 0.49 2.882427  0.243601 0.067226      84 167
+       0          1 0.45 1.259586  0.711457 0.129299     546 670
+       1         -1 0.73 0.987079  0.030105 0.013390      10 269
+       1          1 0.49 2.103522  1.246442 0.106789     395 569
+       2         -1 0.45 0.109044 -0.013849 0.231102     235 464
+       2          1 0.62 1.264617  0.416288 0.099301     156 374"
+2025-10-29 08:53:44,evaluate_backtest,OK,"AAPL  Sharpe=0.73  MaxDD=-0.39%  CAGR=1.21%
+NVDA  Sharpe=0.88  MaxDD=-3.95%  CAGR=38.33%
+AMD  Sharpe=0.83  MaxDD=-1.24%  CAGR=7.89%
+TSLA  Sharpe=0.43  MaxDD=-0.80%  CAGR=1.37%
+AMZN  Sharpe=0.22  MaxDD=-0.21%  CAGR=0.26%
+GOOGL  Sharpe=0.34  MaxDD=-0.34%  CAGR=0.45%
+MSFT  Sharpe=0.80  MaxDD=-0.16%  CAGR=0.66%
+KO  Sharpe=0.23  MaxDD=-0.30%  CAGR=0.35%
+Saved daily metrics: C:\Users\arthu\market-predictor\backend\reports\daily_metrics.csv"
+2025-10-29 08:53:44,predict,AAPL,OK,"AAPL -> last_close=269.00 pred_close=266.93 d_pct=-0.77
+ret_lstm=-0.00769 sigma=0.01841 CI90%=[258.81,275.05]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,NVDA,OK,"NVDA -> last_close=201.03 pred_close=199.54 d_pct=-0.74
+ret_lstm=-0.00743 sigma=0.03148 CI90%=[189.16,209.91]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,AMD,OK,"AMD -> last_close=258.01 pred_close=256.42 d_pct=-0.62
+ret_lstm=-0.00615 sigma=0.03731 CI90%=[240.63,272.21]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,TSLA,OK,"TSLA -> last_close=460.55 pred_close=456.66 d_pct=-0.85
+ret_lstm=-0.00845 sigma=0.03742 CI90%=[428.39,484.92]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,AMZN,OK,"AMZN -> last_close=229.25 pred_close=227.35 d_pct=-0.83
+ret_lstm=-0.00830 sigma=0.02064 CI90%=[219.59,235.11]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,GOOGL,OK,"GOOGL -> last_close=267.47 pred_close=265.62 d_pct=-0.69
+ret_lstm=-0.00693 sigma=0.01811 CI90%=[257.67,273.56]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,MSFT,OK,"MSFT -> last_close=542.07 pred_close=538.03 d_pct=-0.74
+ret_lstm=-0.00745 sigma=0.01690 CI90%=[523.01,553.06]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:53:44,predict,KO,OK,"KO -> last_close=70.16 pred_close=69.57 d_pct=-0.84
+ret_lstm=-0.00844 sigma=0.01145 CI90%=[68.25,70.89]",c7699202170f9fb0618fe40c437ff209
+2025-10-29 08:57:50,load_best_hparams,DEFAULTS,"{""LOOKBACK_DAYS"": 540, ""HALF_LIFE_DAYS"": 90, ""START_DATE"": ""2019-01-01"", ""STEP_DAYS"": 30, ""TEST_DAYS"": 30, ""TIME_STEP"": 30, ""EPOCHS"": 20, ""FINE_TUNE_EPOCHS"": 12, ""ALPHA"": 0.6, ""FEES"": 0.0002}"
+2025-10-29 08:57:50,collect,OK,87371643320445a1fd1a7faa2ef9d2fb

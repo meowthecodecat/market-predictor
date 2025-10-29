@@ -1,6 +1,7 @@
 import React, { useRef, useEffect, useState } from 'react'
 import { useNavigate, useLocation } from 'react-router-dom'
 import './styles/GooeyNav.css'
+import { prefetch } from '../lib/prefetchRoutes'
 
 export default function GooeyNav({
   items = [
@@ -30,6 +31,14 @@ export default function GooeyNav({
       opacity: 1,
     })
   }
+
+<a
+  href="/models"
+  onMouseEnter={() => prefetch.models()}
+  onClick={(e) => handleClick(e, index)}
+>
+  Models
+</a>
 
   const handleClick = (e, index, href) => {
     e.preventDefault()

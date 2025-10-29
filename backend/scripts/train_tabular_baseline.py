@@ -1,11 +1,9 @@
 # FILENAME: scripts/train_tabular_baseline.py
 # -*- coding: utf-8 -*-
 from __future__ import annotations
-# === DÉTERMINISME TOTAL ===
 import os, random, numpy as np
 os.environ["PYTHONHASHSEED"] = "42"
 random.seed(42); np.random.seed(42)
-# ==========================
 
 import argparse
 from pathlib import Path
@@ -33,6 +31,7 @@ DEFAULT_FEATURES = [
     "trend_regime","vol_regime","market_vol","dow","month","month_end_flag","earnings_flag",
     "overnight_gap","intraday_return","gap_fill","volatility_rolling","volume_surge",
     "SPY_ret_1","XLK_ret_1","DXY_ret_1","US10Y_ret_1","rates_shock",
+    "prev_err_1","prev_abs_err_1","err_ma5_lag1","err_ma20_lag1","bias20_lag1","hit20_lag1",
 ]
 
 def _load_prices(sym: str) -> pd.DataFrame:
@@ -41,6 +40,15 @@ def _load_prices(sym: str) -> pd.DataFrame:
     df = df.rename(columns={c: c.capitalize() for c in df.columns})
     df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
     return df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
+
+def _load_errors(sym: str) -> pd.DataFrame | None:
+    p = DATA / "model_errors.csv"
+    if not p.exists(): return None
+    df = pd.read_csv(p, parse_dates=["Date"])
+    df = df[df["Symbol"] == sym][["Date","pred_ret","actual_ret","err_1","abs_err_1","err_ma5","err_ma20","bias20","hit20"]].copy()
+    df = df.sort_values("Date").reset_index(drop=True)
+    df = df.drop(columns=["Symbol"], errors="ignore")
+    return df
 
 def _make_label_up1d(df: pd.DataFrame) -> pd.Series:
     close = pd.to_numeric(df["Close"], errors="coerce")
@@ -56,19 +64,18 @@ def main():
 
     sym = args.symbol.upper()
     raw = _load_prices(sym)
+    err = _load_errors(sym)
 
     def _try(symbol: str):
         p = DATA / f"{symbol}_historical_prices.csv"
         if p.exists():
-            df = pd.read_csv(p)
-            df.columns = [c.capitalize() for c in df.columns]
-            df["Date"] = pd.to_datetime(df["Date"], errors="coerce")
+            df = pd.read_csv(p); df.columns=[c.capitalize() for c in df.columns]
+            df["Date"]=pd.to_datetime(df["Date"], errors="coerce")
             return df.dropna(subset=["Date","Close"]).sort_values("Date").reset_index(drop=True)
         return None
-
     exog = {k: _try(k) for k in ["SPY","XLK","DXY","US10Y"] if _try(k) is not None}
 
-    feats_df, _ = make_features(raw, market_df=None, earnings_dates=None, exog=exog)
+    feats_df, _ = make_features(raw, market_df=None, earnings_dates=None, exog=exog, errors_df=err)
     feats_df = time_window(feats_df, lookback_days=args.lookback_days).reset_index(drop=True)
     w = time_decay_weights(feats_df, half_life_days=args.half_life_days)
     w_series = pd.Series(w, index=feats_df.index)
@@ -80,8 +87,7 @@ def main():
     X = feats_df[use_cols].astype(float)
     df_xy = pd.concat([feats_df[["Date"]], X, y.rename("y")], axis=1).dropna()
     if len(df_xy) < 400:
-        print("Données insuffisantes.")
-        return
+        print("Données insuffisantes."); return
 
     X = df_xy[use_cols].to_numpy(dtype=float)
     y = df_xy["y"].to_numpy(dtype=int)
@@ -113,8 +119,9 @@ def main():
     pd.DataFrame([rec]).to_csv(DATA / f"gbm_cv_report_{sym}.csv", index=False)
     print(rec)
 
-    joblib.dump({"scaler": scaler, "model": base, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}.pkl")
-    joblib.dump({"scaler": scaler, "model": calib, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}_calibrated.pkl")
+    import joblib as _jb
+    _jb.dump({"scaler": scaler, "model": base, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}.pkl")
+    _jb.dump({"scaler": scaler, "model": calib, "features": use_cols, "seed": 42}, MODELS / f"tabular_gbm_{sym}_calibrated.pkl")
     print(f"Saved: {MODELS / f'tabular_gbm_{sym}.pkl'}")
     print(f"Saved: {MODELS / f'tabular_gbm_{sym}_calibrated.pkl'}")
 

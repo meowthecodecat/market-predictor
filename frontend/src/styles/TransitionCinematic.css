@@ -1,0 +1,33 @@
+/* rideau cinématique “liquid glass” */
+.transition-cinematic {
+  position: fixed;
+  inset: 0;
+  z-index: 7;
+  background: linear-gradient(135deg, rgba(17,23,41,.6) 0%, rgba(40,60,80,.6) 100%);
+  backdrop-filter: blur(30px) saturate(200%);
+  -webkit-backdrop-filter: blur(30px) saturate(200%);
+  box-shadow: 0 0 60px rgba(0,0,0,.5) inset;
+  pointer-events: none;
+}
+
+.transition-cinematic__sheen {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(800px 400px at 110% 20%, rgba(255,255,255,.12), transparent 60%),
+    radial-gradient(1000px 400px at -10% 80%, rgba(255,255,255,.08), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.85;
+}
+
+/* contenu global */
+.page-transition-wrapper {
+  position: relative;
+  z-index: 1;
+  transform-origin: center center;
+}
+
+/* navbar au-dessus du rideau */
+.gooey-nav {
+  z-index: 10;
+}

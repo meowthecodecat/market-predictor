@@ -1,7 +1,13 @@
 # FILENAME: scripts/run_all.py
 # -*- coding: utf-8 -*-
 """
-Orchestration + auto HP + data freeze option + logging hash.
+Orchestration + auto HP + mode live + boucle d'apprentissage des erreurs.
+Ordre:
+1) data_collection
+2) evaluate_predictions  -> MAJ data/model_errors.csv (erreurs d'hier)
+3) train_next_close + train_tabular_baseline (lisent model_errors.csv)
+4) threshold_sweep, evaluate_backtest
+5) predict_next_close
 """
 import subprocess, sys, csv, re, json, hashlib
 from datetime import datetime, timezone
@@ -20,7 +26,7 @@ RUN_SUMMARY = DATA / "run_summary.csv"
 RUN_LOG = REPORTS / "run_log.csv"
 
 TICKERS = ["AAPL","NVDA","AMD","TSLA","AMZN","GOOGL","MSFT","KO"]
-FREEZE_DATA = False  # live mode
+FREEZE_DATA = False  # live
 
 HP = {
     "LOOKBACK_DAYS": 540,
@@ -62,17 +68,18 @@ def write_run_summary(rows: list[list[str]]) -> None:
         w.writerows(rows)
 
 def load_best_hparams() -> dict:
+    latest = None
     hyper_dirs = [p for p in REPORTS.glob("hyper_*") if p.is_dir()]
-    if not hyper_dirs: return {}
-    latest = max(hyper_dirs, key=lambda p: p.name.replace("hyper_", ""))
+    if hyper_dirs:
+        latest = max(hyper_dirs, key=lambda p: p.name.replace("hyper_", ""))
+    if not latest: return {}
     best = latest / "best.json"
     if not best.exists(): return {}
     try:
         with best.open("r", encoding="utf-8") as f: obj = json.load(f)
     except Exception: return {}
     out = {}
-    br = obj.get("best_reg") or {}
-    bc = obj.get("best_classif") or {}
+    br = obj.get("best_reg") or {}; bc = obj.get("best_classif") or {}
     if "lookback_days" in br: out["LOOKBACK_DAYS"] = int(br["lookback_days"])
     if "half_life_days" in br: out["HALF_LIFE_DAYS"] = int(br["half_life_days"])
     if "start_date" in br: out["START_DATE"] = str(br["start_date"])
@@ -84,6 +91,7 @@ def load_best_hparams() -> dict:
     return out
 
 def md5_file(p: Path) -> str:
+    import hashlib
     h = hashlib.md5()
     with open(p, "rb") as f:
         for chunk in iter(lambda: f.read(65536), b""): h.update(chunk)
@@ -91,6 +99,7 @@ def md5_file(p: Path) -> str:
 
 def data_hash() -> str:
     files = sorted(DATA.glob("*_historical_prices.csv"))
+    import hashlib
     h = hashlib.md5()
     for fp in files: h.update(md5_file(fp).encode())
     return h.hexdigest()
@@ -100,17 +109,25 @@ def main():
     best = load_best_hparams(); HP.update(best)
     append_run_log(ts_utc=ts, step="load_best_hparams", status="OK" if best else "DEFAULTS", hp=json.dumps(HP))
 
+    # 1) Collecte (live)
     if not FREEZE_DATA:
         run([sys.executable, str(SCRIPTS / "data_collection.py"),
              "--symbols", ",".join(TICKERS), "--years", "10"])
-        append_run_log(ts_utc=ts, step="collect", status="OK", symbols=",".join(TICKERS), data_hash=data_hash())
+        append_run_log(ts_utc=ts, step="collect", status="OK", data_hash=data_hash())
     else:
-        append_run_log(ts_utc=ts, step="collect", status="SKIPPED", symbols=",".join(TICKERS), data_hash=data_hash())
+        append_run_log(ts_utc=ts, step="collect", status="SKIPPED", data_hash=data_hash())
 
+    # 2) Évaluer les prédictions passées -> alimenter model_errors.csv
+    out, rc = run([sys.executable, str(SCRIPTS / "evaluate_predictions.py")], capture=True)
+    append_run_log(ts_utc=ts, step="evaluate_predictions", status="OK" if rc==0 else f"FAIL({rc})",
+                   stdout=out.strip()[:2000])
+
+    # 3) Entraînements
     for t in TICKERS:
         for p in MODELS.glob(f"nextclose_{t}.*"):
             try: p.unlink()
             except Exception: pass
+
         cmd = [sys.executable, str(SCRIPTS / "train_next_close.py"),
                "--symbol", t,
                "--time-step", str(HP["TIME_STEP"]),
@@ -134,6 +151,7 @@ def main():
         append_run_log(ts_utc=ts, step="train_tab", symbol=t, status="OK" if rc==0 else f"FAIL({rc})",
                        stdout=out.strip()[:2000], data_hash=data_hash())
 
+    # 4) Sweep + Backtest
     out, rc = run([sys.executable, str(SCRIPTS / "threshold_sweep.py"),
                    "--fees", str(HP["FEES"]), "--symbol", "AAPL"], capture=True)
     append_run_log(ts_utc=ts, step="threshold_sweep", status="OK" if rc==0 else f"FAIL({rc})", stdout=out.strip()[:2000])
@@ -142,10 +160,11 @@ def main():
     append_run_log(ts_utc=ts, step="evaluate_backtest", status="OK" if rc==0 else f"FAIL({rc})",
                    stdout=out.strip()[:2000])
 
+    # 5) Prédictions du jour
     rows, ok = [], 0
     for t in TICKERS:
         cmd = [sys.executable, str(SCRIPTS / "predict_next_close.py"),
-               "--symbol", t, "--time-step", str(HP["TIME_STEP"])]
+               "--symbol", t, "--time-step", str(HP["TIME_STEP"]), "--alpha", str(HP["ALPHA"])]
         out, rc = run(cmd, capture=True)
         m = re.search(rf"{t}\s*->\s*last_close=([\d\.]+)\s+pred_close=([\d\.]+)\s+d_pct=([-\d\.]+)", out or "")
         if m:
@@ -155,10 +174,12 @@ def main():
             rows.append([ts, t, "", "", "", "FAIL"])
         append_run_log(ts_utc=ts, step="predict", symbol=t, status="OK" if m else "FAIL",
                        stdout=out.strip()[:2000], data_hash=data_hash())
+
     write_run_summary(rows)
     if ok == 0:
         print("Arrêt: toutes les prédictions ont échoué."); sys.exit(1)
-    print(f"\nTerminé. Résumé: {RUN_SUMMARY}")
+
+    print(f"\nTerminé. Résumé: {DATA / 'run_summary.csv'}")
     print(f"Log: {RUN_LOG}")
     sys.exit(0)
 

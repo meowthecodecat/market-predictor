@@ -87,6 +87,7 @@
 .gooey-nav nav ul li.active a {
   color: #111827;
   text-shadow: none;
+    z-index: 10; 
 }
 
 /* --- Option accessibilité --- */
